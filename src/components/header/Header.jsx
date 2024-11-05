@@ -7,15 +7,15 @@ const Header = () => {
             <header>
                 <a href="#" className='logo'>CineLuxe</a>
                 <ul className='nav'>
-                    <li><a href="#"></a><i class="fa-solid fa-house"></i></li>
-                    <li><a href="#"></a>Home</li>
-                    <li><a href="#"></a>Home</li>
-                    <li><a href="#"></a>Home</li>
+                    <li><a href="#"><i className="fa-solid fa-house"></i></a></li>
+                    <li><a href="#">Películas</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Home</a></li>
                 </ul>
 
                 <div className='search'>
                     <input type="text" placeholder='Search' />
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
             </header>
         </>

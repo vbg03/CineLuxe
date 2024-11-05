@@ -11,8 +11,8 @@ const Banner = () => {
                     </h4>
                     <p>Hola</p>
                     <div className="button">
-                        <a href="#"><i class="fa-solid fa-play"></i>Mirar</a>
-                        <a href="#"><i class="fa-solid fa-plus"></i>Mi Lista</a>
+                        <a href="#"><i className="fa-solid fa-play"></i>Mirar</a>
+                        <a href="#"><i className="fa-solid fa-plus"></i>Mi Lista</a>
                     </div>
                 </div>
                 <div className="carousel-box">
@@ -34,12 +34,22 @@ const Banner = () => {
                         </div>
                     </div>
                 </div>
-                <a href="#" className="play"><i class="fa-solid fa-circle-play"></i>Mirar Trailer</a>
+                <a href="#" className="play"><i className="fa-solid fa-circle-play"></i>Mirar Trailer</a>
                 <ul className="sci">
-                    <li><a href="#"></a><i class="fa-brands fa-youtube"></i></li>
+                    <li><a href="#"></a><i className="fa-brands fa-youtube"></i></li>
                 </ul>
 
             </div>
+            <div className="trailer">
+                <video src=""
+                muted
+                controls="true"
+                autoPlay="true"
+                ></video>
+                <img className="close" src="./imagenes/close.png" alt="" />
+            </div>
+
+            <script src="./components/banner/carousel.js"></script>
         </>
     )
 }
