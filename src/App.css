@@ -2,6 +2,7 @@
 
 
 * {
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -13,19 +14,19 @@
 
 body {
   background: #000000;
-  font-family: 'Poppins', sans-serif;
 }
 
 header {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 50px;
-  z-index: 10; /* Asegura que el header esté arriba del banner */
+  padding: 30px 100px;
+  z-index: 10;
+  /* Asegura que el header esté arriba del banner */
 }
 
 .logo {
@@ -40,7 +41,13 @@ header {
 }
 
 .nav {
-  display: flex;
+  width: 100%;
+    height: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .nav li {
@@ -59,6 +66,11 @@ header {
 
 .nav li:hover a {
   color: var(--primary);
+}
+
+.nav .links {
+  display: flex;
+  gap: 2rem;
 }
 
 .search {
@@ -220,7 +232,8 @@ header {
 }
 
 .carousel-box {
-  margin-top: 100px; /* Agrega un margen para que el header no se solape con el carrusel */
+  margin-top: 100px;
+  /* Agrega un margen para que el header no se solape con el carrusel */
 }
 
 .carousel {
