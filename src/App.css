@@ -232,27 +232,42 @@ header {
 }
 
 .carousel-box {
-  margin-top: 100px;
-  /* Agrega un margen para que el header no se solape con el carrusel */
+  position: relative;
+  min-width: 950px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .carousel {
-  position: relative;
+  display: flex;
+  gap: 15px; /* Espacio entre las imágenes */
+  overflow-x: auto; /* Permite deslizar si hay muchas imágenes */
   height: 550px;
-  perspective: 1500px;
+  perspective: 1000px;
 }
 
 .carousel .carousel-item {
   width: 250px;
-  cursor: pointer;
+  flex: none; /* Asegura que cada ítem sea independiente */
+  transition: transform 0.2s ease;
 }
 
 .carousel .carousel-item img {
-  max-width: 235px;
+  width: 100%;
   border-radius: 10px;
-  transform: translateX(8px) translateY(-100px);
   object-fit: cover;
-  object-position: center;
+  transition: transform 0.1s ease;
+}
+
+.carousel .carousel-item:hover img {
+  transform: scale(1.1); /* Agranda la imagen al pasar el mouse */
 }
 
 .play {
