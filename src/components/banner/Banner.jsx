@@ -8,7 +8,7 @@ const Banner = () => {
             fullWidth: false,
             shift: 10,
             indicators: false,
-            padding: 80 // Espacio entre ítems
+            padding: 30 // Espacio entre ítems
         });
     }, []);
     
