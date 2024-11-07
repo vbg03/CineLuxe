@@ -220,7 +220,7 @@ header {
 
 .banner .carousel-box {
   position: relative;
-  min-width: 950px;
+  min-width: 850px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -231,13 +231,8 @@ header {
   border-radius: 10px;
 }
 
-.carousel-box {
-  margin-top: 100px;
-  /* Agrega un margen para que el header no se solape con el carrusel */
-}
-
 .carousel {
-  position: relative;
+  display: relative;
   height: 550px;
   perspective: 1500px;
 }
@@ -245,6 +240,7 @@ header {
 .carousel .carousel-item {
   width: 250px;
   cursor: pointer;
+  margin-top: 6%;
 }
 
 .carousel .carousel-item img {
