@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import Header from './components/header/header'
+import Header from './components/header/Header'
 import Banner from './components/banner/Banner'
 import Login from './components/login/Login'
 import Contenido from './components/contenido/Contenido'
