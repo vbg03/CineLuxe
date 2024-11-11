@@ -10,6 +10,7 @@
 
 :root {
   --primary: #ff3700;
+  --secundary: #34a89a; 
 }
 
 body {
@@ -513,13 +514,13 @@ header {
 .wrapper.welcome .btn {
   width: 100%;
   height: 45px; /* Coincide con el estilo de los otros botones */
-  background: var(--primary);
+  background: var(--secundary);
   color: #ffffff;
   border: none;
   outline: none;
   border-radius: 6px;
   font-size: 1em;
-  font-weight: 500;
+  font-weight: 400;
   cursor: pointer;
   transition: background 0.3s ease;
   margin-bottom: 15px; /* Separación entre botones si hay más de uno */
@@ -561,8 +562,8 @@ header {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
-  height: 300px; /* Tamaño similar al cuadro de bienvenida */
-  background: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+  height: 440px; /* Igual que los cuadros de login y register */
+  background: rgba(255, 255, 255, 0.1); /* Mantiene el fondo translúcido */
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   backdrop-filter: blur(20px);
@@ -573,41 +574,52 @@ header {
   justify-content: center;
   z-index: 1000;
   text-align: center;
+  overflow: hidden; /* Asegura que no haya desbordamiento */
 }
 
 .wrapper.logout-message h2 {
   font-size: 2em;
   color: #ffffff;
-  margin-bottom: 15px;
+  margin-bottom: 20px; /* Más espacio para mayor coherencia */
 }
 
 .wrapper.logout-message p {
-  font-size: 1.2em;
+  font-size: 1em;
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 20px;
+  margin-bottom: 30px; /* Similar al espaciado en otros cuadros */
 }
 
 .wrapper.logout-message .btn {
   width: 70%;
-  padding: 10px 20px;
-  background: var(--primary); /* El color principal definido */
+  height: 45px; /* Altura aumentada para hacer el botón más grande */
+  background: var(--primary); /* Color principal definido */
   color: #ffffff;
   border: none;
-  border-radius: 6px;
-  font-size: 1em;
-  font-weight: 500;
+  border-radius: 6px; /* Bordes ligeramente más redondeados */
+  font-size: 1em; /* Texto más grande */
+  font-weight: 400; /* Texto más grueso */
+  text-align: center; /* Centra horizontalmente el texto */
+  line-height: center; /* Centra verticalmente el texto */
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.wrapper.logout-message .btn:hover {
+  background: rgba(255, 255, 255, 0.8); /* Efecto hover */
+  color: #000; /* Contraste en hover */
+  transform: scale(1.05); /* Ampliación ligera al pasar el mouse */
 }
 
 .wrapper.logout-message .btn.btn-green {
-  background: #34a89a; /* El verde que solicitaste */
+  background: #34a89a; /* Verde solicitado */
 }
 
 .wrapper.logout-message .btn.btn-green:hover {
-  background: rgba(255, 255, 255, 0.8); /* Efecto hover */
+  background: rgba(255, 255, 255, 0.8); /* Efecto hover para botón verde */
   color: #000; /* Contraste en hover */
 }
+
+
 
 .wrapper.logout-message .icon-close {
   position: absolute;
