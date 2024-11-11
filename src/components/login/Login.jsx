@@ -125,7 +125,7 @@ const Login = () => {
     };
 
     // Mensaje de sesión cerrada
-    if (logoutMessage) {
+    if (logoutMessage && !showWelcome) {
         return (
             <div className="wrapper logout-message">
                 <span
@@ -150,7 +150,7 @@ const Login = () => {
     }
 
     // Mensaje de bienvenida después del inicio de sesión
-    if (isLoggedIn && showWelcome) {
+    if (isLoggedIn && showWelcome && !logoutMessage) {
         return (
             <div className="wrapper welcome">
                 <span
@@ -172,6 +172,7 @@ const Login = () => {
                         className="btn btn-logout"
                         onClick={() => {
                             setIsLoggedIn(false);
+                            setShowWelcome(false);
                             setLogoutMessage(true);
                         }}
                     >
