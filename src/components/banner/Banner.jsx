@@ -1,15 +1,32 @@
-import React, { useEffect } from 'react';
-import M from 'materialize-css'; // Asegúrate de que esté instalado
+import React, { useEffect, useRef } from 'react';
+import M from 'materialize-css';
 
 const Banner = () => {
+    const intervalRef = useRef(null); // Referencia para el intervalo
+
     useEffect(() => {
         const elems = document.querySelectorAll('.carousel');
-        M.Carousel.init(elems, {
+        const instance = M.Carousel.init(elems, {
             fullWidth: false,
             shift: 10,
             indicators: false,
-            padding: 30 // Espacio entre ítems
+            padding: 30,
+            onCycleTo: (activeItem) => {
+                const bg = activeItem.getAttribute('data-bg');
+                const title = activeItem.getAttribute('data-title');
+                changeBg(bg, title);
+            }
         });
+
+        // Movimiento automático cada 5 segundos
+        intervalRef.current = setInterval(() => {
+            const carouselInstance = M.Carousel.getInstance(elems[0]);
+            if (carouselInstance) {
+                carouselInstance.next(); // Mueve al siguiente ítem
+            }
+        }, 5000);
+
+        return () => clearInterval(intervalRef.current); // Limpia el intervalo al desmontar el componente
     }, []);
 
     const changeBg = (bg, title) => {
@@ -30,11 +47,15 @@ const Banner = () => {
         });
     };
 
-    
+    const handleItemClick = (bg, title) => {
+        clearInterval(intervalRef.current); // Detén el movimiento automático
+        changeBg(bg, title); // Actualiza el fondo y el contenido
+    };
 
     return (
         <>
             <div className="banner">
+                {/* Contenidos dinámicos */}
                 <div className="content laSirenita active">
                     <img src="/imagenes/peliculas/laSirenita-title.png" alt="laSirenita-logo" className="movie-title" />
                     <h4>
@@ -90,29 +111,33 @@ const Banner = () => {
                         <a href="#"><i className="fa-solid fa-plus"></i>Mi Lista</a>
                     </div>
                 </div>
+
+                {/* Carrusel */}
                 <div className="carousel-box">
                     <div className="carousel">
-                        <div className="carousel-item" onClick={() => changeBg('bg-laSirenita.jpg', 'laSirenita')}>
+                        <div className="carousel-item" data-bg="bg-laSirenita.jpg" data-title="laSirenita" onClick={() => handleItemClick('bg-laSirenita.jpg', 'laSirenita')}>
                             <img src="/imagenes/peliculas/laSirenita-poster.jpeg" alt="laSirenita-poster" />
                         </div>
-                        <div className="carousel-item" onClick={() => changeBg('bg-joker.jpg', 'joker')}>
+                        <div className="carousel-item" data-bg="bg-joker.jpg" data-title="joker" onClick={() => handleItemClick('bg-joker.jpg', 'joker')}>
                             <img src="/imagenes/peliculas/joker-poster.avif" alt="joker-poster" />
                         </div>
-                        <div className="carousel-item" onClick={() => changeBg('bg-theSubstance.jpg', 'theSubstance')}>
+                        <div className="carousel-item" data-bg="bg-theSubstance.jpg" data-title="theSubstance" onClick={() => handleItemClick('bg-theSubstance.jpg', 'theSubstance')}>
                             <img src="/imagenes/peliculas/theSubstance-poster.jpg" alt="theSubstance-poster" />
                         </div>
-                        <div className="carousel-item" onClick={() => changeBg('bg-terrifier.jpeg', 'terrifier')}>
+                        <div className="carousel-item" data-bg="bg-terrifier.jpeg" data-title="terrifier" onClick={() => handleItemClick('bg-terrifier.jpeg', 'terrifier')}>
                             <img src="/imagenes/peliculas/terrifier-poster.webp" alt="terrifier-poster" />
                         </div>
-                        <div className="carousel-item" onClick={() => changeBg('bg-venom3.webp', 'venom3')}>
+                        <div className="carousel-item" data-bg="bg-venom3.webp" data-title="venom3" onClick={() => handleItemClick('bg-venom3.webp', 'venom3')}>
                             <img src="/imagenes/peliculas/venom3-poster.jpg" alt="venom3-poster" />
                         </div>
                     </div>
                 </div>
+
+                {/* Botón para el trailer */}
                 <a href="#" className="play"><i className="fa-solid fa-circle-play"></i>Mirar Trailer</a>
             </div>
         </>
     );
-}
+};
 
 export default Banner;
