@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './components/header/header.css';
+import './Header.css';
+
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
