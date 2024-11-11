@@ -1,0 +1,188 @@
+/* General */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Estilo para el botón de menú hamburguesa */
+.hamburger {
+    display: none; /* Oculto por defecto en pantallas grandes */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 200; /* Asegura que esté por encima del menú desplegable */
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #fff; /* Color blanco por defecto */
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Cambiar a rojo al tocar */
+.hamburger:active span {
+    background-color: #ff3700;
+}
+
+/* Cambiar a rojo al pasar el mouse */
+.hamburger:hover span {
+    background-color: #ff3700;
+}
+
+/* Animación para el botón cuando está activo */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Menú desplegable para pantallas pequeñas */
+.links {
+    opacity: 0;
+    transform: translateY(-10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 8px;
+    padding: 20px; /* Ajustar para más espacio interno */
+    width: 220px; /* Ampliar ligeramente el menú */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.links.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.links li {
+    margin: 10px 0;
+    list-style: none;
+    width: 100%; /* Asegura que ocupen todo el ancho disponible */
+    text-align: center;
+}
+
+.links li a,
+.links li button {
+    font-size: 1em;
+    color: #fff;
+    text-decoration: none;
+    display: inline-flex; /* Asegura que el texto y los íconos estén alineados */
+    align-items: center;
+    justify-content: center; /* Centra el contenido dentro del enlace */
+    gap: 10px;
+    padding: 8px 12px;
+    transition: color 0.3s ease;
+    border-radius: 4px;
+}
+
+.links li a:hover,
+.links li button:hover {
+    color: #ff3700;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Barra de búsqueda dentro del menú hamburguesa */
+.search-small {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centrar contenido */
+    gap: 10px;
+    margin-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 10px;
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+}
+
+.search-small input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    background-color: transparent;
+    color: #fff;
+    outline: none;
+    max-width: 150px;
+    text-align: center; /* Centrar texto del input */
+}
+
+.search-small input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.search-small i {
+    color: #fff;
+    font-size: 1.2em;
+}
+
+/* Mostrar menú hamburguesa solo en pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .links li a,
+    .links li button {
+        text-align: center;
+        padding: 8px 10px;
+    }
+
+    .search {
+        display: none;
+    }
+}
+
+/* Pantallas grandes */
+@media screen and (min-width: 769px) {
+    .hamburger {
+        display: none;
+    }
+
+    .links {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        background-color: transparent;
+        box-shadow: none;
+        width: auto;
+        padding: 0;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        transition: none;
+    }
+
+    .links li {
+        margin: 0 10px;
+    }
+
+    .links li .btnLogin-popup {
+        align-self: center;
+        padding: 5px 15px;
+    }
+
+    .search-small {
+        display: none;
+    }
+}
