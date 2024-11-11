@@ -149,39 +149,40 @@ const Login = () => {
         );
     }
 
-    // Mensaje de bienvenida después del inicio de sesión
-    if (isLoggedIn && showWelcome && !logoutMessage) {
-        return (
-            <div className="wrapper welcome">
-                <span
-                    className="icon-close"
+// Mensaje de bienvenida después del inicio de sesión
+if (isLoggedIn && showWelcome && !logoutMessage) {
+    return (
+        <div className="wrapper welcome">
+            <span
+                className="icon-close"
+                onClick={() => setShowWelcome(false)}
+            >
+                <i className="fa-solid fa-x"></i>
+            </span>
+            <h2>Bienvenido/a</h2>
+            <p>Has iniciado sesión exitosamente.</p>
+            <div className="button-group">
+                <button
+                    className="btn btn-green"
                     onClick={() => setShowWelcome(false)}
                 >
-                    <i className="fa-solid fa-x"></i>
-                </span>
-                <h2>Bienvenido/a</h2>
-                <p>Has iniciado sesión exitosamente.</p>
-                <div className="button-group">
-                    <button
-                        className="btn btn-green"
-                        onClick={() => setShowWelcome(false)}
-                    >
-                        Continuar
-                    </button>
-                    <button
-                        className="btn btn-logout"
-                        onClick={() => {
-                            setIsLoggedIn(false);
-                            setShowWelcome(false);
-                            setLogoutMessage(true);
-                        }}
-                    >
-                        Cerrar Sesión
-                    </button>
-                </div>
+                    Continuar
+                </button>
+                <button
+                    className="btn btn-logout"
+                    onClick={() => {
+                        setIsLoggedIn(false);
+                        setShowWelcome(false);
+                        setLogoutMessage(true);
+                    }}
+                >
+                    Cerrar Sesión
+                </button>
             </div>
-        );
-    }
+        </div>
+    );
+}
+
 
     // Formulario de inicio o registro
     return (
