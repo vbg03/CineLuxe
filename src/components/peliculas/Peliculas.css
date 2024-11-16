@@ -1,0 +1,135 @@
+/* Ajustar el espacio superior para compensar el header */
+.peliculas-container {
+    display: flex;
+    background-color: #000;
+    color: white;
+    height: 100vh;
+    overflow-y: auto;
+    padding-top: 70px; /* Compensa la altura del header */
+}
+
+.categorias {
+    width: 250px; /* Más espacio para los géneros */
+    background-color: #1c1c1c;
+    color: white;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.categorias h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.categorias ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.categorias li {
+    cursor: pointer;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #333;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.categorias li:hover {
+    color: #f39c12;
+    background-color: #333;
+}
+
+.peliculas {
+    flex: 1;
+    padding: 20px;
+}
+
+.peliculas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Aumenta el tamaño mínimo */
+    gap: 20px;
+    margin-top: 1rem;
+}
+
+.pelicula {
+    text-align: center;
+    background-color: #222;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pelicula:hover {
+    transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.pelicula img {
+    width: 100%;
+    border-bottom: 2px solid #f39c12;
+    aspect-ratio: 2 / 3; /* Proporción estándar de póster de cine */
+}
+
+.pelicula h3 {
+    color: white;
+    font-size: 1rem;
+    margin: 10px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pelicula p {
+    font-size: 0.9rem;
+    color: #bbb;
+    margin-bottom: 10px;
+}
+
+/* Sección de detalles de la película */
+.detalles-pelicula {
+    margin-top: 70px;
+    width: 400px;
+    background-color: #1c1c1c;
+    color: white;
+    padding: 20px;
+    position: fixed; /* Fija al lado derecho */
+    right: 0; /* Alineada al borde derecho */
+    top: 0;
+    height: 100vh; /* Ocupa toda la altura */
+    border-left: 2px solid #333;
+    overflow-y: auto;
+}
+
+.detalles-pelicula h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.detalles-pelicula p {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #bbb;
+}
+
+.btn-reproducir {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #f39c12;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-reproducir:hover {
+    background-color: #e67e22;
+}
