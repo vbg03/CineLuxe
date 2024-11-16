@@ -1,0 +1,90 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto; /* Centra la página */
+    /*background-color: #121212; /* Fondo oscuro para contraste */
+    color: white; /* Color de texto claro */
+    border-radius: 10px;
+  }
+  
+  .detalles {
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: 300px 1fr; /* Diseño con dos columnas */
+    gap: 20px;
+    align-items: start;
+  }
+  
+  .poster-pelicula {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .info-detallada h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .info-detallada p {
+    margin: 5px 0;
+  }
+  
+  .reseñas {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+  }
+  
+  .reseñas h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .reseña {
+    border-bottom: 1px solid #333;
+    padding: 10px 0;
+  }
+  
+  .reseña:last-child {
+    border-bottom: none;
+  }
+  
+  .reseña h3 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  .reseña p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  /* Asegura que sea responsive */
+  @media (max-width: 768px) {
+    .detalles-pelicula {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .btn-reproducir {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #f39c12;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-reproducir:hover {
+    background-color: #e67e22;
+}
