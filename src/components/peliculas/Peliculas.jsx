@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'; // Importar useParams
+import { useParams, useNavigate } from 'react-router-dom'; // Importar useNavigate
 import './Peliculas.css';
 
 const Peliculas = () => {
-    const { genreId } = useParams(); // Obtener el parámetro dinámico de la URL
+    const { genreId } = useParams();
+    const navigate = useNavigate(); // Crear instancia de useNavigate
     const [movies, setMovies] = useState([]);
     const [genres, setGenres] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState(null);
@@ -11,14 +12,12 @@ const Peliculas = () => {
     const API_KEY = '7f725faee93092b2c693d44412011a01';
     const BASE_URL = 'https://api.themoviedb.org/3';
 
-    // Cargar géneros para la lista de categorías (opcional si no se usa en el aside)
     useEffect(() => {
         fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=es-ES`)
             .then((response) => response.json())
             .then((data) => setGenres(data.genres));
     }, []);
 
-    // Cargar películas según el género recibido desde la URL
     useEffect(() => {
         const endpoint = genreId
             ? `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}&language=es-ES`
@@ -27,24 +26,22 @@ const Peliculas = () => {
         fetch(endpoint)
             .then((response) => response.json())
             .then((data) => setMovies(data.results));
-    }, [genreId]); // Volver a cargar las películas si cambia el género
+    }, [genreId]);
 
-    // Manejar selección de película para mostrar detalles
     const handleMovieClick = (movie) => {
         setSelectedMovie(movie);
     };
 
     return (
         <div className="peliculas-container">
-            {/* Sección de categorías */}
             <aside className="categorias">
                 <h2>Géneros</h2>
                 <ul>
-                    <li onClick={() => window.location.href = '/peliculas'}>Todos</li> {/* Opción para mostrar todas las películas */}
+                    <li onClick={() => window.location.href = '/peliculas'}>Todos</li>
                     {genres.map((genre) => (
                         <li
                             key={genre.id}
-                            onClick={() => window.location.href = `/peliculas/${genre.id}`} // Redirigir al género correspondiente
+                            onClick={() => window.location.href = `/peliculas/${genre.id}`}
                         >
                             {genre.name}
                         </li>
@@ -52,14 +49,13 @@ const Peliculas = () => {
                 </ul>
             </aside>
 
-            {/* Sección de películas */}
             <main className="peliculas">
                 <div className="peliculas-grid">
                     {movies.map((movie) => (
                         <div
                             key={movie.id}
                             className="pelicula"
-                            onClick={() => handleMovieClick(movie)} // Evento para seleccionar película
+                            onClick={() => handleMovieClick(movie)}
                         >
                             <img
                                 src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
@@ -72,7 +68,6 @@ const Peliculas = () => {
                 </div>
             </main>
 
-            {/* Sección de detalles de la película */}
             <aside className="detalles-pelicula">
                 {selectedMovie ? (
                     <div className="detalles-contenido">
@@ -83,7 +78,13 @@ const Peliculas = () => {
                         <p>
                             <strong>Descripción:</strong> {selectedMovie.overview}
                         </p>
-                        <button className="btn-reproducir">Reproducir</button>
+                        {/* Botón modificado para redirigir a la página de detalles */}
+                        <button
+                            className="btn-reproducir"
+                            onClick={() => navigate(`/pelicula/${selectedMovie.id}`)}
+                        >
+                            Saber Más
+                        </button>
                     </div>
                 ) : (
                     <p>Selecciona una película para ver los detalles.</p>
