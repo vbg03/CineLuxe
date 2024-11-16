@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../footer/Footer';
 import './Peliculas.css';
-import Header from '../header/header';
 
 const Peliculas = () => {
     const [genres, setGenres] = useState([]);
