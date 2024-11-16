@@ -1,0 +1,168 @@
+.inicio-container {
+    background-color: #000;
+    color: white;
+    padding: 20px;
+    max-width: 1200px;
+    /* Define un ancho máximo */
+    margin: 0 auto;
+    /* Centra el contenido */
+    padding: 20px;
+}
+
+.estrenos,
+.hola {
+    margin-top: 30px;
+}
+
+.grid-categorias {
+    display: flex;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.proximos {
+    margin-top: 30px;
+}
+
+.grid-peliculas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.tarjeta-pelicula,
+.tarjeta-categoria {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tarjeta-pelicula:hover {
+    transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.tarjeta-pelicula img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.info-pelicula {
+    padding: 10px 5px;
+    text-align: left;
+}
+
+.info-pelicula h3 {
+    margin: 5px 0;
+    font-size: 1.1rem;
+}
+
+.info-pelicula p {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.tarjeta-categoria {
+    background: linear-gradient(135deg, #ff3700, #ff8a00);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.boton-categoria {
+    background-color: #ff3700;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.boton-categoria:hover {
+    background-color: #ff8a00;
+}
+
+.categoria-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10px;
+    /* Incrementa la altura */
+    margin: 0 15px;
+    /* Ajusta la separación entre elementos */
+}
+
+.boton-categoria {
+    background-color: #ff3700;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    /* Aumenta el tamaño del botón */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    /* Ajusta el tamaño del texto */
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.boton-categoria:hover {
+    background-color: #ff8a00;
+}
+
+.hola {
+    display: flex;
+    width: 100%;
+}
+
+.reseñas {
+    margin-top: 30px;
+  }
+  
+  .lista-reseñas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .tarjeta-reseña {
+    background-color: #1a1a1a;
+    color: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .tarjeta-reseña:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .tarjeta-reseña h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .tarjeta-reseña p {
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  
+  .tarjeta-reseña span {
+    font-size: 1rem;
+    color: #ff8a00;
+  }
+  

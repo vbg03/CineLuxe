@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom'; // Importa Link
 import './Header.css';
-
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef(null); // Referencia para el menú
-  const hamburgerRef = useRef(null); // Referencia para el botón hamburguesa
+  const menuRef = useRef(null);
+  const hamburgerRef = useRef(null);
+  
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen); // Alternar estado del menú
+    setMenuOpen(!menuOpen);
   };
 
   const closeMenu = (e) => {
-    // Cerrar menú si se hace clic fuera del menú o del botón hamburguesa
     if (
       menuRef.current &&
       !menuRef.current.contains(e.target) &&
@@ -24,7 +24,6 @@ const Header = () => {
   };
 
   useEffect(() => {
-    // Agregar evento para detectar clics fuera del menú
     document.addEventListener('mousedown', closeMenu);
     return () => {
       document.removeEventListener('mousedown', closeMenu);
@@ -39,33 +38,30 @@ const Header = () => {
   return (
     <header>
       <div className="nav">
-        {/* Logo */}
-        <a href="#" className="logo">
+        <Link to="/" className="logo">
           CineLuxe
-        </a>
+        </Link>
 
-        {/* Botón de menú hamburguesa */}
         <div
           className={`hamburger ${menuOpen ? 'active' : ''}`}
           onClick={toggleMenu}
-          ref={hamburgerRef} // Referencia para el botón hamburguesa
+          ref={hamburgerRef}
         >
           <span></span>
           <span></span>
           <span></span>
         </div>
 
-        {/* Links principales */}
         <ul className={`links ${menuOpen ? 'active' : ''}`} ref={menuRef}>
           <li onClick={() => setMenuOpen(false)}>
-            <a href="#">
+            <Link to="/">
               <i className="fa-solid fa-house"></i> Inicio
-            </a>
+            </Link>
           </li>
           <li onClick={() => setMenuOpen(false)}>
-            <a href="#peliculas">
+            <Link to="/peliculas"> {/* Usa Link para la navegación */}
               <i className="fa-solid fa-film"></i> Películas
-            </a>
+            </Link>
           </li>
           <li>
             <button className="btnLogin-popup" onClick={openLoginPopup}>
@@ -78,9 +74,8 @@ const Header = () => {
           </li>
         </ul>
 
-        {/* Barra de búsqueda (solo visible en pantallas grandes) */}
         <div className="search">
-          <input type="text" placeholder="Search" />
+          <input type="text" placeholder="Buscar" />
           <i className="fa-solid fa-magnifying-glass"></i>
         </div>
       </div>
