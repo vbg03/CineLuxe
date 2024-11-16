@@ -38,14 +38,17 @@ function App() {
               <Login />
               <Banner />
               <Contenido />
-              <Footer />
             </>
           }
         />
 
         {/* Ruta de Películas */}
         <Route path="/peliculas" element={<Peliculas />} />
+        <Route path="/" element={<Contenido />} />
+        <Route path="/peliculas/:genreId" element={<Peliculas />} />
       </Routes>
+
+      <Footer />
 
       {/* Scripts */}
       <script

@@ -61,54 +61,49 @@ const Banner = () => {
                     <h4>
                         <span>2023</span><span><i>12+</i></span><span>2h 14min</span><span>Romance</span>
                     </h4>
-                    <p>Hola</p>
+                    <p>Una joven sirena que anhela conocer el mundo que se extiende donde acaba el mar emerge a la superficie y se enamora del príncipe Eric. Sin embargo, la única manera de estar con él exige hacer un pacto con Úrsula, la perversa bruja del mar.</p>
                     <div className="button">
                         <a href="#"><i className="fa-solid fa-play"></i>Mirar</a>
-                        <a href="#"><i className="fa-solid fa-plus"></i>Mi Lista</a>
                     </div>
                 </div>
                 <div className="content joker">
                     <img src="/imagenes/peliculas/joker-title.png" alt="joker-logo" className="movie-title" />
                     <h4>
-                        <span>2024</span><span><i>15+</i></span><span>2h 14min</span><span>Romance</span>
+                        <span>2024</span><span><i>15+</i></span><span>2h 18min</span><span>Suspenso</span>
                     </h4>
-                    <p>Hola</p>
+                    <p>Secuela de "Joker (2019), de nuevo con Phoenix como Arthur Fleck, y que muestra su relación con el personaje de Harley Quinn, interpretado por Lady Gaga.</p>
                     <div className="button">
                         <a href="#"><i className="fa-solid fa-play"></i>Mirar</a>
-                        <a href="#"><i className="fa-solid fa-plus"></i>Mi Lista</a>
                     </div>
                 </div>
                 <div className="content terrifier">
                     <img src="/imagenes/peliculas/terrifier-title.png" alt="terrifier-logo" className="movie-title" />
                     <h4>
-                        <span>2024</span><span><i>18+</i></span><span>2h 14min</span><span>Terror</span>
+                        <span>2024</span><span><i>18+</i></span><span>2h 5min</span><span>Terror</span>
                     </h4>
-                    <p>Hola</p>
+                    <p>El payaso Art se dispone a desatar el caos entre los desprevenidos habitantes del condado de Miles, mientras duermen plácidamente en Nochebuena.</p>
                     <div className="button">
                         <a href="#"><i className="fa-solid fa-play"></i>Mirar</a>
-                        <a href="#"><i className="fa-solid fa-plus"></i>Mi Lista</a>
                     </div>
                 </div>
                 <div className="content theSubstance">
                     <img src="/imagenes/peliculas/theSubstance-title.webp" alt="theSubstance-logo" className="movie-title" />
                     <h4>
-                        <span>2024</span><span><i>18+</i></span><span>2h 14min</span><span>Suspenso</span>
+                        <span>2024</span><span><i>18+</i></span><span>2h 20min</span><span>Terror</span>
                     </h4>
-                    <p>Hola</p>
+                    <p>"Tú, pero mejor en todos los sentidos". Esa es la promesa de la sustancia, un producto revolucionario basado en la división celular, que crea un alter ego más joven, más bello, más perfecto.</p>
                     <div className="button">
                         <a href="#"><i className="fa-solid fa-play"></i>Mirar</a>
-                        <a href="#"><i className="fa-solid fa-plus"></i>Mi Lista</a>
                     </div>
                 </div>
                 <div className="content venom3">
                     <img src="/imagenes/peliculas/venom3-title.png" alt="venom3-logo" className="movie-title" />
                     <h4>
-                        <span>2024</span><span><i>12+</i></span><span>2h 14min</span><span>Acción</span>
+                        <span>2024</span><span><i>12+</i></span><span>1h 49min</span><span>Acción</span>
                     </h4>
-                    <p>Hola</p>
+                    <p>Eddie y Venom están a la fuga. Perseguidos por sus sendos mundos y cada vez más cercados, el dúo se ve abocado a tomar una decisión devastadora que hará que caiga el telón sobre el último baile de Venom y Eddie.</p>
                     <div className="button">
                         <a href="#"><i className="fa-solid fa-play"></i>Mirar</a>
-                        <a href="#"><i className="fa-solid fa-plus"></i>Mi Lista</a>
                     </div>
                 </div>
 

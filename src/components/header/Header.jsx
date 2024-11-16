@@ -6,6 +6,7 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const hamburgerRef = useRef(null);
+  
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
