@@ -3,37 +3,14 @@ import { useNavigate } from "react-router-dom";
 import "./Contenido.css";
 
 const Contenido = () => {
-  const API_KEY = '7f725faee93092b2c693d44412011a01';
-  const BASE_URL = 'https://api.themoviedb.org/3';
+  const API_KEY = "7f725faee93092b2c693d44412011a01";
+  const BASE_URL = "https://api.themoviedb.org/3";
 
   const [ultimosEstrenos, setUltimosEstrenos] = useState([]);
   const [proximosEstrenos, setProximosEstrenos] = useState([]);
   const [peliculasRecomendadas, setPeliculasRecomendadas] = useState([]);
   const [categorias, setCategorias] = useState([]);
   const navigate = useNavigate(); // Hook para redireccionar
-
-  const reseñasFicticias = [
-    {
-      usuario: "CineFanatic123",
-      reseña: "¡Esta película me dejó sin palabras! La trama es muy envolvente y las actuaciones increíbles.",
-      puntuacion: 9.5,
-    },
-    {
-      usuario: "PeliculasTop",
-      reseña: "Me gustó, aunque sentí que el final pudo ser mejor. Aún así, buena experiencia.",
-      puntuacion: 7.8,
-    },
-    {
-      usuario: "FilmLover89",
-      reseña: "Los efectos visuales son impresionantes, pero la historia no fue tan impactante como esperaba.",
-      puntuacion: 8.0,
-    },
-    {
-      usuario: "CinemaAddict",
-      reseña: "¡Un verdadero clásico moderno! No puedo esperar para verla de nuevo.",
-      puntuacion: 10,
-    },
-  ];
 
   useEffect(() => {
     // Últimos estrenos
@@ -61,6 +38,12 @@ const Contenido = () => {
       .catch((error) => console.error("Error al cargar las categorías:", error));
   }, []);
 
+  // Manejar clic en una película
+  const handleMovieClick = (movieId) => {
+    navigate(`/pelicula/${movieId}`); // Navega a la página de detalles con el ID de la película
+  };
+
+  // Manejar clic en una categoría
   const handleCategoryClick = (genreId) => {
     navigate(`/peliculas/${genreId}`); // Navega a la ruta con el ID del género
   };
@@ -72,7 +55,11 @@ const Contenido = () => {
         <h2 className="logo">Últimos Estrenos</h2>
         <div className="grid-peliculas">
           {ultimosEstrenos.map((pelicula) => (
-            <div key={pelicula.id} className="tarjeta-pelicula">
+            <div
+              key={pelicula.id}
+              className="tarjeta-pelicula"
+              onClick={() => handleMovieClick(pelicula.id)} // Maneja el clic en la película
+            >
               <img
                 src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
                 alt={pelicula.title}
@@ -92,7 +79,11 @@ const Contenido = () => {
         <h2 className="logo">Próximos Estrenos</h2>
         <div className="grid-peliculas">
           {proximosEstrenos.map((pelicula) => (
-            <div key={pelicula.id} className="tarjeta-pelicula">
+            <div
+              key={pelicula.id}
+              className="tarjeta-pelicula"
+              onClick={() => handleMovieClick(pelicula.id)} // Maneja el clic en la película
+            >
               <img
                 src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
                 alt={pelicula.title}
@@ -112,7 +103,11 @@ const Contenido = () => {
         <h2 className="logo">Películas Recomendadas</h2>
         <div className="grid-peliculas">
           {peliculasRecomendadas.map((pelicula) => (
-            <div key={pelicula.id} className="tarjeta-pelicula">
+            <div
+              key={pelicula.id}
+              className="tarjeta-pelicula"
+              onClick={() => handleMovieClick(pelicula.id)} // Maneja el clic en la película
+            >
               <img
                 src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
                 alt={pelicula.title}
@@ -144,20 +139,6 @@ const Contenido = () => {
           </div>
         </section>
       </div>
-
-      {/* Reseñas de Usuarios */}
-      <section className="reseñas">
-        <h2 className="logo">Reseñas de Usuarios</h2>
-        <div className="lista-reseñas">
-          {reseñasFicticias.map((reseña, index) => (
-            <div key={index} className="tarjeta-reseña">
-              <h3>{reseña.usuario}</h3>
-              <p>"{reseña.reseña}"</p>
-              <span>Puntuación: {reseña.puntuacion}/10</span>
-            </div>
-          ))}
-        </div>
-      </section>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import Contenido from './components/contenido/Contenido';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import Peliculas from './components/peliculas/Peliculas';
+import Pelicula from "./components/pelicula/Pelicula";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -46,6 +47,7 @@ function App() {
         <Route path="/peliculas" element={<Peliculas />} />
         <Route path="/" element={<Contenido />} />
         <Route path="/peliculas/:genreId" element={<Peliculas />} />
+        <Route path="/pelicula/:id" element={<Pelicula />} />
       </Routes>
 
       <Footer />
