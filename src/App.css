@@ -10,11 +10,18 @@
 
 :root {
   --primary: #ff3700;
-  --secundary: #34a89a; 
+  --secundary: #34a89a;
 }
 
 body {
   background: #000000;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  /* Evita scroll horizontal */
+  box-sizing: border-box;
 }
 
 header {
@@ -27,8 +34,10 @@ header {
   align-items: center;
   padding: 20px 100px;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
-  backdrop-filter: blur(5px); /* Efecto de difuminado */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Fondo semi-transparente */
+  backdrop-filter: blur(5px);
+  /* Efecto de difuminado */
   /* Asegura que el header esté arriba del banner */
 }
 
@@ -117,11 +126,16 @@ header {
   font-size: 1.1em;
   color: #fff;
   transition: .5s;
-  border: none; /* Quita el borde */
-  outline: none; /* Quita el borde de enfoque */
-  padding: 10; /* Ajusta el padding si es necesario */
-  margin-top: -10px; /* Ajusta el margen superior para alinearlo */
-  vertical-align: middle; /* Alinea el icono con los otros elementos */
+  border: none;
+  /* Quita el borde */
+  outline: none;
+  /* Quita el borde de enfoque */
+  padding: 10;
+  /* Ajusta el padding si es necesario */
+  margin-top: -10px;
+  /* Ajusta el margen superior para alinearlo */
+  vertical-align: middle;
+  /* Alinea el icono con los otros elementos */
 }
 
 .nav .btnLogin-popup:hover {
@@ -135,13 +149,16 @@ header {
   transform: translate(-50%, -50%);
   width: 400px;
   height: 440px;
-  background: rgba(255, 255, 255, 0.1); /* Ajusta el fondo según prefieras */
+  background: rgba(255, 255, 255, 0.1);
+  /* Ajusta el fondo según prefieras */
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   backdrop-filter: blur(20px);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-  display: none; /* Oculto por defecto */
-  z-index: 1000; /* Asegura que esté sobre el banner */
+  display: none;
+  /* Oculto por defecto */
+  z-index: 1000;
+  /* Asegura que esté sobre el banner */
   transition: transform .5s ease, height .2s ease;
   overflow: hidden;
 }
@@ -486,8 +503,10 @@ header {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
-  height: 440px; /* Igual que los cuadros de login y register */
-  background: rgba(255, 255, 255, 0.1); /* Mantiene el fondo translúcido */
+  height: 440px;
+  /* Igual que los cuadros de login y register */
+  background: rgba(255, 255, 255, 0.1);
+  /* Mantiene el fondo translúcido */
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   backdrop-filter: blur(20px);
@@ -498,24 +517,28 @@ header {
   justify-content: center;
   z-index: 1000;
   text-align: center;
-  overflow: hidden; /* Asegura que no haya desbordamiento */
+  overflow: hidden;
+  /* Asegura que no haya desbordamiento */
 }
 
 .wrapper.welcome h2 {
   font-size: 2em;
   color: #ffffff;
-  margin-bottom: 20px; /* Más espacio para mayor coherencia */
+  margin-bottom: 20px;
+  /* Más espacio para mayor coherencia */
 }
 
 .wrapper.welcome p {
   font-size: 1em;
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 30px; /* Similar al espaciado en otros cuadros */
+  margin-bottom: 30px;
+  /* Similar al espaciado en otros cuadros */
 }
 
 .wrapper.welcome .btn {
   width: 100%;
-  height: 45px; /* Coincide con el estilo de los otros botones */
+  height: 45px;
+  /* Coincide con el estilo de los otros botones */
   background: var(--secundary);
   color: #ffffff;
   border: none;
@@ -525,20 +548,26 @@ header {
   font-weight: 400;
   cursor: pointer;
   transition: background 0.3s ease;
-  margin-bottom: 15px; /* Separación entre botones si hay más de uno */
+  margin-bottom: 15px;
+  /* Separación entre botones si hay más de uno */
 }
 
 .wrapper.welcome .btn:hover {
-  background: rgba(255, 255, 255, 0.8); /* Efecto hover consistente */
-  color: #000; /* Contraste en el hover */
+  background: rgba(255, 255, 255, 0.8);
+  /* Efecto hover consistente */
+  color: #000;
+  /* Contraste en el hover */
 }
 
 .wrapper.welcome .button-group {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Espacio entre botones */
-  width: 100%; /* Asegura que ocupen todo el ancho del cuadro */
-  padding: 0 20px; /* Consistencia con los cuadros de login y register */
+  gap: 15px;
+  /* Espacio entre botones */
+  width: 100%;
+  /* Asegura que ocupen todo el ancho del cuadro */
+  padding: 0 20px;
+  /* Consistencia con los cuadros de login y register */
 }
 
 .wrapper.welcome .icon-close {
@@ -564,8 +593,10 @@ header {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
-  height: 440px; /* Igual que los cuadros de login y register */
-  background: rgba(255, 255, 255, 0.1); /* Mantiene el fondo translúcido */
+  height: 440px;
+  /* Igual que los cuadros de login y register */
+  background: rgba(255, 255, 255, 0.1);
+  /* Mantiene el fondo translúcido */
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   backdrop-filter: blur(20px);
@@ -576,49 +607,65 @@ header {
   justify-content: center;
   z-index: 1000;
   text-align: center;
-  overflow: hidden; /* Asegura que no haya desbordamiento */
+  overflow: hidden;
+  /* Asegura que no haya desbordamiento */
 }
 
 .wrapper.logout-message h2 {
   font-size: 2em;
   color: #ffffff;
-  margin-bottom: 20px; /* Más espacio para mayor coherencia */
+  margin-bottom: 20px;
+  /* Más espacio para mayor coherencia */
 }
 
 .wrapper.logout-message p {
   font-size: 1em;
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 30px; /* Similar al espaciado en otros cuadros */
+  margin-bottom: 30px;
+  /* Similar al espaciado en otros cuadros */
 }
 
 .wrapper.logout-message .btn {
   width: 70%;
-  height: 45px; /* Altura aumentada para hacer el botón más grande */
-  background: var(--primary); /* Color principal definido */
+  height: 45px;
+  /* Altura aumentada para hacer el botón más grande */
+  background: var(--primary);
+  /* Color principal definido */
   color: #ffffff;
   border: none;
-  border-radius: 6px; /* Bordes ligeramente más redondeados */
-  font-size: 1em; /* Texto más grande */
-  font-weight: 400; /* Texto más grueso */
-  text-align: center; /* Centra horizontalmente el texto */
-  line-height: center; /* Centra verticalmente el texto */
+  border-radius: 6px;
+  /* Bordes ligeramente más redondeados */
+  font-size: 1em;
+  /* Texto más grande */
+  font-weight: 400;
+  /* Texto más grueso */
+  text-align: center;
+  /* Centra horizontalmente el texto */
+  line-height: center;
+  /* Centra verticalmente el texto */
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .wrapper.logout-message .btn:hover {
-  background: rgba(255, 255, 255, 0.8); /* Efecto hover */
-  color: #000; /* Contraste en hover */
-  transform: scale(1.05); /* Ampliación ligera al pasar el mouse */
+  background: rgba(255, 255, 255, 0.8);
+  /* Efecto hover */
+  color: #000;
+  /* Contraste en hover */
+  transform: scale(1.05);
+  /* Ampliación ligera al pasar el mouse */
 }
 
 .wrapper.logout-message .btn.btn-green {
-  background: #34a89a; /* Verde solicitado */
+  background: #34a89a;
+  /* Verde solicitado */
 }
 
 .wrapper.logout-message .btn.btn-green:hover {
-  background: rgba(255, 255, 255, 0.8); /* Efecto hover para botón verde */
-  color: #000; /* Contraste en hover */
+  background: rgba(255, 255, 255, 0.8);
+  /* Efecto hover para botón verde */
+  color: #000;
+  /* Contraste en hover */
 }
 
 

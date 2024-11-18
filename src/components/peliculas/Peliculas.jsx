@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom'; // useLocation para leer parámetros
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import './Peliculas.css';
 
 const Peliculas = () => {
@@ -9,7 +9,6 @@ const Peliculas = () => {
     const [movies, setMovies] = useState([]);
     const [genres, setGenres] = useState([]);
     const [filteredMovies, setFilteredMovies] = useState([]);
-    const [selectedMovie, setSelectedMovie] = useState(null);
 
     const API_KEY = '7f725faee93092b2c693d44412011a01';
     const BASE_URL = 'https://api.themoviedb.org/3';
@@ -49,8 +48,8 @@ const Peliculas = () => {
         }
     }, [searchTerm, movies]);
 
-    const handleMovieClick = (movie) => {
-        setSelectedMovie(movie);
+    const handleMovieClick = (movieId) => {
+        navigate(`/pelicula/${movieId}`);
     };
 
     return (
@@ -76,7 +75,7 @@ const Peliculas = () => {
                         <div
                             key={movie.id}
                             className="pelicula"
-                            onClick={() => handleMovieClick(movie)}
+                            onClick={() => handleMovieClick(movie.id)}
                         >
                             <img
                                 src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
@@ -88,28 +87,6 @@ const Peliculas = () => {
                     ))}
                 </div>
             </main>
-
-            <aside className="detalles-pelicula">
-                {selectedMovie ? (
-                    <div className="detalles-contenido">
-                        <h2>{selectedMovie.title}</h2>
-                        <p>
-                            <strong>Fecha de lanzamiento:</strong> {selectedMovie.release_date}
-                        </p>
-                        <p>
-                            <strong>Descripción:</strong> {selectedMovie.overview}
-                        </p>
-                        <button
-                            className="btn-reproducir"
-                            onClick={() => navigate(`/pelicula/${selectedMovie.id}`)}
-                        >
-                            Saber Más
-                        </button>
-                    </div>
-                ) : (
-                    <p>Selecciona una película para ver los detalles.</p>
-                )}
-            </aside>
         </div>
     );
 };
