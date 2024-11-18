@@ -161,3 +161,29 @@
   color: #ff3700;
   background-color: rgba(255, 255, 255, 0.1);
 }
+
+.reproductor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  text-align: center;
+}
+
+.reproductor h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.reproductor p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}

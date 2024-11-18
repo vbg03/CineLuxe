@@ -10,6 +10,7 @@ const Pelicula = () => {
   const [pelicula, setPelicula] = useState(null);
   const [reseñas, setReseñas] = useState([]);
   const [trailerKey, setTrailerKey] = useState(null); // Clave del tráiler de YouTube
+  const [mostrarReproductor, setMostrarReproductor] = useState(false); // Estado del reproductor
 
   useEffect(() => {
     // Obtener detalles de la película
@@ -40,6 +41,10 @@ const Pelicula = () => {
       .catch((error) => console.error("Error al cargar el tráiler:", error));
   };
 
+  const handleReproducir = () => {
+    setMostrarReproductor(true); // Muestra el reproductor
+  };
+
   if (!pelicula) {
     return <p>Cargando...</p>;
   }
@@ -61,7 +66,7 @@ const Pelicula = () => {
           <button className="btn-trailer" onClick={handleVerTrailer}>
             <i className="fa-solid fa-circle-play"></i> Ver Trailer
           </button>
-          <button className="btn-reproducir">
+          <button className="btn-reproducir" onClick={handleReproducir}>
             <i className="fa-solid fa-play"></i> Reproducir
           </button>
         </div>
@@ -80,6 +85,15 @@ const Pelicula = () => {
             allowFullScreen
           ></iframe>
           <button className="btn-cerrar" onClick={() => setTrailerKey(null)}>Cerrar</button>
+        </div>
+      )}
+
+      {/* Simulación del reproductor */}
+      {mostrarReproductor && (
+        <div className="reproductor">
+          <h2>Reproduciendo: {pelicula.title}</h2>
+          <p>(Simulación de reproducción de la película)</p>
+          <button className="btn-cerrar" onClick={() => setMostrarReproductor(false)}>Cerrar</button>
         </div>
       )}
 
