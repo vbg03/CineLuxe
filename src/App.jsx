@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Banner from './components/banner/Banner';
@@ -8,9 +8,29 @@ import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import Peliculas from './components/peliculas/Peliculas';
 import Pelicula from "./components/pelicula/Pelicula";
+import MiniPerfil from './components/perfil/MiniPerfil'; // Importa el MiniPerfil
+import { auth } from './firebase/firebase'; // Asegúrate de que el auth esté configurado correctamente
+import { onAuthStateChanged, signOut } from 'firebase/auth'; // Métodos de Firebase
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [user, setUser] = useState(null);
+
+  // Escuchar cambios de autenticación
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe(); // Limpia el listener cuando se desmonte
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      setUser(null);
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+    }
+  };
 
   return (
     <Router>
@@ -36,7 +56,7 @@ function App() {
           path="/"
           element={
             <>
-              <Login />
+              {!user ? <Login /> : <MiniPerfil user={user} onLogout={handleLogout} />}
               <Banner />
               <Contenido />
             </>
@@ -48,6 +68,7 @@ function App() {
         <Route path="/" element={<Contenido />} />
         <Route path="/peliculas/:genreId" element={<Peliculas />} />
         <Route path="/pelicula/:id" element={<Pelicula />} />
+        <Route path="/perfil" element={<MiniPerfil user={user} onLogout={handleLogout} />} />
       </Routes>
 
       <Footer />
@@ -74,4 +95,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 
