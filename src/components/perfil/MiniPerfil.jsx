@@ -20,7 +20,17 @@ const MiniPerfil = ({ user, onLogout }) => {
             >
                 <i className="fa-solid fa-x"></i>
             </span>
-            <h2>Perfil del Usuario</h2>
+            <div className="perfil-header">
+                {/* Icono de foto de perfil */}
+                <div className="foto-perfil">
+                    {user.photoURL ? (
+                        <img src={user.photoURL} alt="Foto de perfil" />
+                    ) : (
+                        <i className="fa-solid fa-user-circle"></i>
+                    )}
+                </div>
+                <h2>Perfil del Usuario</h2>
+            </div>
             <p><strong>Nombre:</strong> {user.displayName || 'Sin nombre'}</p>
             <p><strong>Email:</strong> {user.email}</p>
             <button className="btn-logout" onClick={onLogout}>
