@@ -6,6 +6,8 @@
     height: 100vh;
     overflow-y: auto;
     padding-top: 70px; /* Compensa la altura del header */
+    width: 140%; /* Asegura que ocupe todo el ancho */
+    box-sizing: border-box; /* Evita que paddings/márgenes interfieran con el tamaño */
 }
 
 .categorias {
@@ -48,7 +50,9 @@
 .peliculas {
     flex: 1;
     padding: 20px;
+    overflow-y: auto; /* Opcional: para manejar el scroll si es necesario */
 }
+
 
 .peliculas-grid {
     display: grid;
@@ -89,47 +93,4 @@
     font-size: 0.9rem;
     color: #bbb;
     margin-bottom: 10px;
-}
-
-/* Sección de detalles de la película */
-.detalles-pelicula {
-    margin-top: 70px;
-    width: 400px;
-    background-color: #1c1c1c;
-    color: white;
-    padding: 20px;
-    position: fixed; /* Fija al lado derecho */
-    right: 0; /* Alineada al borde derecho */
-    top: 0;
-    height: 100vh; /* Ocupa toda la altura */
-    border-left: 2px solid #333;
-    overflow-y: auto;
-}
-
-.detalles-pelicula h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-.detalles-pelicula p {
-    margin: 10px 0;
-    font-size: 1rem;
-    color: #bbb;
-}
-
-.btn-reproducir {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: white;
-    background-color: #f39c12;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.btn-reproducir:hover {
-    background-color: #e67e22;
 }

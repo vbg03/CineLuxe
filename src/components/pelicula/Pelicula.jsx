@@ -9,6 +9,7 @@ const Pelicula = () => {
 
   const [pelicula, setPelicula] = useState(null);
   const [reseñas, setReseñas] = useState([]);
+  const [trailerKey, setTrailerKey] = useState(null); // Clave del tráiler de YouTube
 
   useEffect(() => {
     // Obtener detalles de la película
@@ -23,6 +24,21 @@ const Pelicula = () => {
       .then((data) => setReseñas(data.results))
       .catch((error) => console.error("Error al cargar las reseñas:", error));
   }, [id]);
+
+  const handleVerTrailer = () => {
+    // Obtener los videos asociados a la película
+    fetch(`${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}&language=es-ES`)
+      .then((response) => response.json())
+      .then((data) => {
+        const trailer = data.results.find((video) => video.type === "Trailer" && video.site === "YouTube");
+        if (trailer) {
+          setTrailerKey(trailer.key); // Guarda la clave del tráiler
+        } else {
+          alert("No se encontró un tráiler para esta película.");
+        }
+      })
+      .catch((error) => console.error("Error al cargar el tráiler:", error));
+  };
 
   if (!pelicula) {
     return <p>Cargando...</p>;
@@ -42,9 +58,30 @@ const Pelicula = () => {
           <p><strong>Fecha de estreno:</strong> {pelicula.release_date}</p>
           <p><strong>Género:</strong> {pelicula.genres.map((g) => g.name).join(", ")}</p>
           <p><strong>Calificación:</strong> {pelicula.vote_average}/10</p>
-          <button className="btn-reproducir">Reproducir</button>
+          <button className="btn-trailer" onClick={handleVerTrailer}>
+            <i className="fa-solid fa-circle-play"></i> Ver Trailer
+          </button>
+          <button className="btn-reproducir">
+            <i className="fa-solid fa-play"></i> Reproducir
+          </button>
         </div>
       </div>
+
+      {/* Mostrar el tráiler si está disponible */}
+      {trailerKey && (
+        <div className="trailer-modal">
+          <iframe
+            width="100%"
+            height="500"
+            src={`https://www.youtube.com/embed/${trailerKey}`}
+            title="Tráiler"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+          <button className="btn-cerrar" onClick={() => setTrailerKey(null)}>Cerrar</button>
+        </div>
+      )}
 
       {/* Sección de reseñas */}
       <div className="reseñas">
