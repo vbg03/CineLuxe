@@ -152,9 +152,18 @@ const Login = ({ onClose }) => {
     // Formulario de inicio o registro
     return (
         <div className="wrapper">
-            <span className="icon-close" onClick={onClose}>
+            <span
+                className="icon-close"
+                onClick={() => {
+                    document.querySelector('.wrapper').classList.remove('active-popup'); // Oculta el formulario
+                    setIsRegistering(false); // Restablece el estado a login
+                    resetForm(); // Limpia los campos del formulario
+                }}
+            >
                 <i className="fa-solid fa-x"></i>
             </span>
+
+
             <div className="form-box">
                 <h2>{isRegistering ? 'Registrarse' : 'Ingresar'}</h2>
                 <form onSubmit={isRegistering ? handleRegister : handleLogin}>
