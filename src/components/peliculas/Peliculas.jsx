@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; // Importar useNavigate
+import { useParams, useNavigate, useLocation } from 'react-router-dom'; // useLocation para leer parámetros
 import './Peliculas.css';
 
 const Peliculas = () => {
     const { genreId } = useParams();
-    const navigate = useNavigate(); // Crear instancia de useNavigate
+    const location = useLocation();
+    const navigate = useNavigate();
     const [movies, setMovies] = useState([]);
     const [genres, setGenres] = useState([]);
+    const [filteredMovies, setFilteredMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState(null);
 
     const API_KEY = '7f725faee93092b2c693d44412011a01';
     const BASE_URL = 'https://api.themoviedb.org/3';
+
+    // Leer término de búsqueda de la URL
+    const searchParams = new URLSearchParams(location.search);
+    const searchTerm = searchParams.get('search') || '';
 
     useEffect(() => {
         fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=es-ES`)
@@ -25,8 +31,23 @@ const Peliculas = () => {
 
         fetch(endpoint)
             .then((response) => response.json())
-            .then((data) => setMovies(data.results));
+            .then((data) => {
+                setMovies(data.results);
+                setFilteredMovies(data.results);
+            });
     }, [genreId]);
+
+    useEffect(() => {
+        if (searchTerm) {
+            setFilteredMovies(
+                movies.filter((movie) =>
+                    movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+            );
+        } else {
+            setFilteredMovies(movies);
+        }
+    }, [searchTerm, movies]);
 
     const handleMovieClick = (movie) => {
         setSelectedMovie(movie);
@@ -37,11 +58,11 @@ const Peliculas = () => {
             <aside className="categorias">
                 <h2>Géneros</h2>
                 <ul>
-                    <li onClick={() => window.location.href = '/peliculas'}>Todos</li>
+                    <li onClick={() => navigate('/peliculas')}>Todos</li>
                     {genres.map((genre) => (
                         <li
                             key={genre.id}
-                            onClick={() => window.location.href = `/peliculas/${genre.id}`}
+                            onClick={() => navigate(`/peliculas/${genre.id}`)}
                         >
                             {genre.name}
                         </li>
@@ -51,7 +72,7 @@ const Peliculas = () => {
 
             <main className="peliculas">
                 <div className="peliculas-grid">
-                    {movies.map((movie) => (
+                    {filteredMovies.map((movie) => (
                         <div
                             key={movie.id}
                             className="pelicula"
@@ -78,7 +99,6 @@ const Peliculas = () => {
                         <p>
                             <strong>Descripción:</strong> {selectedMovie.overview}
                         </p>
-                        {/* Botón modificado para redirigir a la página de detalles */}
                         <button
                             className="btn-reproducir"
                             onClick={() => navigate(`/pelicula/${selectedMovie.id}`)}
