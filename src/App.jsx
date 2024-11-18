@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Banner from './components/banner/Banner';
 import Login from './components/login/Login';
@@ -8,19 +8,19 @@ import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import Peliculas from './components/peliculas/Peliculas';
 import Pelicula from "./components/pelicula/Pelicula";
-import MiniPerfil from './components/perfil/MiniPerfil'; // Importa el MiniPerfil
-import { auth } from './firebase/firebase'; // Asegúrate de que el auth esté configurado correctamente
-import { onAuthStateChanged, signOut } from 'firebase/auth'; // Métodos de Firebase
+import MiniPerfil from './components/perfil/MiniPerfil';
+import { auth } from './firebase/firebase'; // Firebase Auth config
+import { onAuthStateChanged, signOut } from 'firebase/auth'; // Firebase methods
 
 function App() {
   const [user, setUser] = useState(null);
 
-  // Escuchar cambios de autenticación
+  // Listen for authentication state changes
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
-    return () => unsubscribe(); // Limpia el listener cuando se desmonte
+    return () => unsubscribe(); // Cleanup listener on unmount
   }, []);
 
   const handleLogout = async () => {
@@ -46,12 +46,12 @@ function App() {
         href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
       />
 
-      {/* Header siempre visible */}
-      <Header />
+      {/* Header always visible */}
+      <Header user={user} onLogout={handleLogout} />
 
-      {/* Configuración de rutas */}
+      {/* Route configuration */}
       <Routes>
-        {/* Ruta de Inicio */}
+        {/* Home Route */}
         <Route
           path="/"
           element={
@@ -63,12 +63,16 @@ function App() {
           }
         />
 
-        {/* Ruta de Películas */}
+        {/* Movies Routes */}
         <Route path="/peliculas" element={<Peliculas />} />
-        <Route path="/" element={<Contenido />} />
         <Route path="/peliculas/:genreId" element={<Peliculas />} />
         <Route path="/pelicula/:id" element={<Pelicula />} />
-        <Route path="/perfil" element={<MiniPerfil user={user} onLogout={handleLogout} />} />
+
+        {/* Profile Route */}
+        <Route
+          path="/perfil"
+          element={user ? <MiniPerfil user={user} onLogout={handleLogout} /> : <Navigate to="/" />}
+        />
       </Routes>
 
       <Footer />
@@ -95,4 +99,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;

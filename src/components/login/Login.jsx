@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { auth } from '../../firebase/firebase';
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     sendPasswordResetEmail,
-} from 'firebase/auth';
+} from "firebase/auth";
 
-const Login = ({ onClose }) => {
+const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
@@ -16,7 +16,41 @@ const Login = ({ onClose }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [logoutMessage, setLogoutMessage] = useState(false);
     const [showWelcome, setShowWelcome] = useState(false);
-    const [showPassword, setShowPassword] = useState(false); // Estado para mostrar u ocultar la contraseña
+
+    useEffect(() => {
+        const wrapper = document.querySelector('.wrapper');
+        const loginLink = document.querySelector('.login-link');
+        const registerLink = document.querySelector('.register-link');
+        const btnPopup = document.querySelector('.btnLogin-popup');
+        const iconClose = document.querySelector('.icon-close');
+
+        registerLink && registerLink.addEventListener('click', () => {
+            wrapper.classList.add('active');
+            setIsRegistering(true);
+            resetForm();
+        });
+
+        loginLink && loginLink.addEventListener('click', () => {
+            wrapper.classList.remove('active');
+            setIsRegistering(false);
+            resetForm();
+        });
+
+        btnPopup && btnPopup.addEventListener('click', () => {
+            wrapper.classList.add('active-popup');
+        });
+
+        iconClose && iconClose.addEventListener('click', () => {
+            wrapper.classList.remove('active-popup');
+        });
+
+        return () => {
+            registerLink && registerLink.removeEventListener('click', () => wrapper.classList.add('active'));
+            btnPopup && btnPopup.removeEventListener('click', () => wrapper.classList.add('active-popup'));
+            loginLink && loginLink.removeEventListener('click', () => wrapper.classList.remove('active'));
+            iconClose && iconClose.removeEventListener('click', () => wrapper.classList.remove('active-popup'));
+        };
+    }, []);
 
     const resetForm = () => {
         setEmail('');
@@ -42,6 +76,21 @@ const Login = ({ onClose }) => {
         }
     };
 
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        setError('');
+        setIsLoading(true);
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            setIsLoggedIn(true);
+            setShowWelcome(true);
+        } catch (err) {
+            setError(handleError(err.code));
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     const handleRegister = async (e) => {
         e.preventDefault();
         setError('');
@@ -53,21 +102,6 @@ const Login = ({ onClose }) => {
         }
         try {
             await createUserWithEmailAndPassword(auth, email, password);
-            setIsLoggedIn(true);
-            setShowWelcome(true);
-        } catch (err) {
-            setError(handleError(err.code));
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        setError('');
-        setIsLoading(true);
-        try {
-            await signInWithEmailAndPassword(auth, email, password);
             setIsLoggedIn(true);
             setShowWelcome(true);
         } catch (err) {
@@ -115,128 +149,133 @@ const Login = ({ onClose }) => {
         );
     }
 
-    // Mensaje de bienvenida después del inicio de sesión
-    if (isLoggedIn && showWelcome) {
-        return (
-            <div className="wrapper welcome">
-                <span
-                    className="icon-close"
-                    onClick={() => setShowWelcome(false)}
-                >
-                    <i className="fa-solid fa-x"></i>
-                </span>
-                <h2>Bienvenido/a</h2>
-                <p>Has iniciado sesión exitosamente.</p>
-                <div className="button-group">
-                    <button
-                        className="btn btn-green"
-                        onClick={() => setShowWelcome(false)}
-                    >
-                        Continuar
-                    </button>
-                    <button
-                        className="btn btn-logout"
-                        onClick={() => {
-                            setIsLoggedIn(false);
-                            setShowWelcome(false);
-                            setLogoutMessage(true);
-                        }}
-                    >
-                        Cerrar Sesión
-                    </button>
-                </div>
-            </div>
-        );
-    }
-
-    // Formulario de inicio o registro
+// Mensaje de bienvenida después del inicio de sesión
+if (isLoggedIn && showWelcome && !logoutMessage) {
     return (
-        <div className="wrapper">
+        <div className="wrapper welcome">
             <span
                 className="icon-close"
-                onClick={() => {
-                    document.querySelector('.wrapper').classList.remove('active-popup'); // Oculta el formulario
-                    setIsRegistering(false); // Restablece el estado a login
-                    resetForm(); // Limpia los campos del formulario
-                }}
+                onClick={() => setShowWelcome(false)}
             >
                 <i className="fa-solid fa-x"></i>
             </span>
+            <h2>Bienvenido/a</h2>
+            <p>Has iniciado sesión exitosamente.</p>
+            <div className="button-group">
+                <button
+                    className="btn btn-green"
+                    onClick={() => setShowWelcome(false)}
+                >
+                    Continuar
+                </button>
+                <button
+                    className="btn btn-logout"
+                    onClick={() => {
+                        setIsLoggedIn(false);
+                        setShowWelcome(false);
+                        setLogoutMessage(true);
+                    }}
+                >
+                    Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    );
+}
 
 
-            <div className="form-box">
-                <h2>{isRegistering ? 'Registrarse' : 'Ingresar'}</h2>
-                <form onSubmit={isRegistering ? handleRegister : handleLogin}>
-                    {isRegistering && (
+    // Formulario de inicio o registro
+    return (
+        <div className='wrapper'>
+            <span className="icon-close"><i className="fa-solid fa-x"></i></span>
+            {!isRegistering ? (
+                <div className="form-box login">
+                    <h2>Ingresar</h2>
+                    <form onSubmit={handleLogin}>
+                        <div className="input-box">
+                            <span className="icon"><i className="fa-solid fa-envelope"></i></span>
+                            <input
+                                type="email"
+                                required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                title="Por favor, introduce un email válido"
+                            />
+                            <label>Email</label>
+                        </div>
+                        <div className="input-box">
+                            <span className="icon"><i className="fa-solid fa-lock"></i></span>
+                            <input
+                                type="password"
+                                required
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                minLength="6"
+                                title="La contraseña debe tener al menos 6 caracteres"
+                            />
+                            <label>Contraseña</label>
+                        </div>
+                        {error && <p className="error">{error}</p>}
+                        <div className="remember-forgot">
+                            <a href="#" onClick={handlePasswordReset}>¿Olvidaste tu contraseña?</a>
+                        </div>
+                        <button type='submit' className='btn' disabled={isLoading}>
+                            {isLoading ? 'Cargando...' : 'Iniciar Sesión'}
+                        </button>
+                        <div className="login-register">
+                            <p>¿No tienes una cuenta?<a href="#" className='register-link'> Registrate</a></p>
+                        </div>
+                    </form>
+                </div>
+            ) : (
+                <div className="form-box register">
+                    <h2>Registrarse</h2>
+                    <form onSubmit={handleRegister}>
                         <div className="input-box">
                             <span className="icon"><i className="fa-solid fa-user"></i></span>
                             <input
                                 type="text"
+                                required
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
-                                required
                             />
-                            <label>Nombre de usuario</label>
+                            <label>Usuario</label>
                         </div>
-                    )}
-                    <div className="input-box">
-                        <span className="icon"><i className="fa-solid fa-envelope"></i></span>
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                        <label>Correo electrónico</label>
-                    </div>
-                    <div className="input-box">
-                        <span className="icon"><i className="fa-solid fa-lock"></i></span>
-                        <input
-                            type={showPassword ? 'text' : 'password'}
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                        <label>Contraseña</label>
-                        <span
-                            className="toggle-password"
-                            onClick={() => setShowPassword(!showPassword)}
-                            style={{ cursor: 'pointer' }}
-                        >
-                            {showPassword ? (
-                                <i className="fa-solid fa-eye-slash"></i>
-                            ) : (
-                                <i className="fa-solid fa-eye"></i>
-                            )}
-                        </span>
-                    </div>
-                    {error && <p className="error">{error}</p>}
-                    {!isRegistering && (
-                        <div className="remember-forgot">
-                            <a href="#" onClick={handlePasswordReset}>¿Olvidaste tu contraseña?</a>
+                        <div className="input-box">
+                            <span className="icon"><i className="fa-solid fa-envelope"></i></span>
+                            <input
+                                type="email"
+                                required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                title="Por favor, introduce un email válido"
+                            />
+                            <label>Email</label>
                         </div>
-                    )}
-                    <button type="submit" className="btn" disabled={isLoading}>
-                        {isLoading ? 'Cargando...' : isRegistering ? 'Registrarse' : 'Iniciar Sesión'}
-                    </button>
-                </form>
-                <div className="login-register">
-                    <p>
-                        {isRegistering
-                            ? '¿Ya tienes una cuenta?'
-                            : '¿No tienes una cuenta?'}
-                        <a
-                            href="#"
-                            onClick={() => {
-                                setIsRegistering(!isRegistering);
-                                resetForm();
-                            }}
-                        >
-                            {isRegistering ? ' Ingresa' : ' Registrate'}
-                        </a>
-                    </p>
+                        <div className="input-box">
+                            <span className="icon"><i className="fa-solid fa-lock"></i></span>
+                            <input
+                                type="password"
+                                required
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                minLength="6"
+                                title="La contraseña debe tener al menos 6 caracteres"
+                            />
+                            <label>Contraseña</label>
+                        </div>
+                        {error && <p className="error">{error}</p>}
+                        <button type='submit' className='btn' disabled={isLoading}>
+                            {isLoading ? 'Cargando...' : 'Registrarse'}
+                        </button>
+                        <div className="login-register">
+                            <p>¿Ya tienes una cuenta?<a href="#" className='login-link'> Ingresa</a></p>
+                        </div>
+                    </form>
                 </div>
-            </div>
+            )}
         </div>
     );
 };

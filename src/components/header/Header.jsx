@@ -1,17 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Importa Link y useNavigate
+import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 
-const Header = () => {
+
+const Header = ({ user, onLogout }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState(''); // Estado para el buscador
+  const [searchTerm, setSearchTerm] = useState('');
   const menuRef = useRef(null);
   const hamburgerRef = useRef(null);
-  const navigate = useNavigate(); // Navegación para el buscador
+  const navigate = useNavigate();
+
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
 
   const closeMenu = (e) => {
     if (
@@ -24,25 +27,18 @@ const Header = () => {
     }
   };
 
+
   useEffect(() => {
     document.addEventListener('mousedown', closeMenu);
-    return () => {
-      document.removeEventListener('mousedown', closeMenu);
-    };
+    return () => document.removeEventListener('mousedown', closeMenu);
   }, []);
 
-  const openLoginPopup = () => {
-    const wrapper = document.querySelector('.wrapper');
-    if (wrapper) wrapper.classList.add('active-popup');
-  };
 
-  // Manejar el cambio en el buscador
   const handleSearchChange = (e) => {
-    const value = e.target.value;
-    setSearchTerm(value);
+    setSearchTerm(e.target.value);
   };
 
-  // Enviar búsqueda al componente Peliculas
+
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (searchTerm.trim()) {
@@ -50,12 +46,14 @@ const Header = () => {
     }
   };
 
+
   return (
     <header>
       <div className="nav">
         <Link to="/" className="logo">
           CineLuxe
         </Link>
+
 
         <div
           className={`hamburger ${menuOpen ? 'active' : ''}`}
@@ -66,6 +64,7 @@ const Header = () => {
           <span></span>
           <span></span>
         </div>
+
 
         <ul className={`links ${menuOpen ? 'active' : ''}`} ref={menuRef}>
           <li onClick={() => setMenuOpen(false)}>
@@ -78,11 +77,26 @@ const Header = () => {
               <i className="fa-solid fa-film"></i> Películas
             </Link>
           </li>
-          <li>
-            <button className="btnLogin-popup" onClick={openLoginPopup}>
-              <i className="fa-solid fa-user"></i> Iniciar Sesión
-            </button>
-          </li>
+          {user ? (
+            <>
+              <li onClick={() => setMenuOpen(false)}>
+                <Link to="/perfil">
+                  <i className="fa-solid fa-user"></i> Mi Perfil
+                </Link>
+              </li>
+              <li>
+                <button className="btnLogout" onClick={onLogout}>
+                  <i className="fa-solid fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+              </li>
+            </>
+          ) : (
+            <li>
+              <button className="btnLogin-popup" onClick={() => navigate('/')}>
+                <i className="fa-solid fa-user"></i> Iniciar Sesión
+              </button>
+            </li>
+          )}
           <li className="search-small">
             <form onSubmit={handleSearchSubmit}>
               <input
@@ -97,6 +111,7 @@ const Header = () => {
             </form>
           </li>
         </ul>
+
 
         <div className="search">
           <form onSubmit={handleSearchSubmit}>
@@ -115,5 +130,6 @@ const Header = () => {
     </header>
   );
 };
+
 
 export default Header;
