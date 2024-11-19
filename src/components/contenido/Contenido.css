@@ -165,4 +165,75 @@
     font-size: 1rem;
     color: #ff8a00;
   }
-  
+  @media (max-width: 768px) {
+    .inicio-container {
+        padding: 10px;
+    }
+
+    .grid-peliculas,
+    .grid-categorias {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+    }
+
+    .tarjeta-pelicula {
+        padding: 10px;
+    }
+
+    .tarjeta-pelicula img {
+        width: 100%;
+        height: auto;
+    }
+
+    .hola {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-pelicula h3 {
+        font-size: 1rem;
+    }
+
+    .info-pelicula p {
+        font-size: 0.8rem;
+    }
+
+    .boton-categoria {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+
+    .lista-reseñas {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .inicio-container {
+        padding: 5px;
+    }
+
+    .grid-peliculas,
+    .grid-categorias {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .tarjeta-pelicula img {
+        border-radius: 5px;
+    }
+
+    .info-pelicula h3 {
+        font-size: 0.9rem;
+    }
+
+    .info-pelicula p {
+        font-size: 0.7rem;
+    }
+
+    .boton-categoria {
+        font-size: 0.7rem;
+        padding: 5px 8px;
+    }
+}
