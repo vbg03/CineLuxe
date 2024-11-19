@@ -686,3 +686,76 @@ header {
   cursor: pointer;
   z-index: 1;
 }
+/* Pantallas pequeñas (menos de 768px) */
+@media (max-width: 768px) {
+  .wrapper {
+      width: 80%; /* Reducir el ancho de los cuadros modales */
+      height: auto; /* Ajustar la altura automáticamente */
+      padding: 20px;
+  }
+
+  .wrapper .form-box {
+      padding: 25px; /* Reducir el padding dentro de los cuadros */
+  }
+
+  .wrapper .form-box h2 {
+      font-size: 1.5em; /* Reducir tamaño del título */
+  }
+
+  .wrapper .input-box input {
+      font-size: 0.9em; /* Reducir tamaño de los inputs */
+  }
+
+  .wrapper .btn {
+      height: 40px; /* Reducir altura de los botones */
+      font-size: 1em; /* Ajustar tamaño de texto */
+  }
+
+  .wrapper .icon-close {
+      width: 40px;
+      height: 40px; /* Reducir tamaño del icono de cerrar */
+      font-size: 1.2em; /* Ajustar tamaño del icono */
+  }
+
+  .wrapper.logout-message .btn {
+      width: 80%; /* Botón más pequeño */
+      height: 40px;
+  }
+}
+
+/* Pantallas medianas (entre 768px y 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .wrapper {
+      width: 70%; /* Ajustar ancho de los cuadros modales */
+      height: auto;
+      padding: 25px;
+  }
+
+  .wrapper .form-box {
+      padding: 30px;
+  }
+
+  .wrapper .form-box h2 {
+      font-size: 1.8em; /* Ajustar tamaño del título */
+  }
+
+  .wrapper .input-box input {
+      font-size: 1em; /* Ajustar tamaño de los inputs */
+  }
+
+  .wrapper .btn {
+      height: 45px;
+      font-size: 1.1em; /* Ajustar tamaño de texto de los botones */
+  }
+
+  .wrapper .icon-close {
+      width: 45px;
+      height: 45px; /* Ajustar tamaño del icono de cerrar */
+      font-size: 1.4em; /* Ajustar tamaño del icono */
+  }
+
+  .wrapper.logout-message .btn {
+      width: 70%; /* Ajustar ancho del botón */
+      height: 45px;
+  }
+}
