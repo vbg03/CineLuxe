@@ -63,7 +63,7 @@ const Banner = () => {
                     </h4>
                     <p>Una joven sirena que anhela conocer el mundo que se extiende donde acaba el mar emerge a la superficie y se enamora del príncipe Eric. Sin embargo, la única manera de estar con él exige hacer un pacto con Úrsula, la perversa bruja del mar.</p>
                     <div className="button">
-                        <a href="#"><i className="fa-solid fa-play"></i>Mirar</a>
+                        <a href="https://www.youtube.com/embed/8LECfkm4fJA?si=lHLxRsbCanOJTquA" target="_blank"><i className="fa-solid fa-play"></i>Mirar Trailer</a>
                     </div>
                 </div>
                 <div className="content joker">
@@ -73,7 +73,7 @@ const Banner = () => {
                     </h4>
                     <p>Secuela de "Joker (2019), de nuevo con Phoenix como Arthur Fleck, y que muestra su relación con el personaje de Harley Quinn, interpretado por Lady Gaga.</p>
                     <div className="button">
-                        <a href="#"><i className="fa-solid fa-play"></i>Mirar</a>
+                        <a href="https://www.youtube.com/embed/spAv-FNhOvA?si=Zvg4jFzbqhuWGV09" target="_blank"><i className="fa-solid fa-play"></i>Mirar Trailer</a>
                     </div>
                 </div>
                 <div className="content terrifier">
@@ -83,7 +83,7 @@ const Banner = () => {
                     </h4>
                     <p>El payaso Art se dispone a desatar el caos entre los desprevenidos habitantes del condado de Miles, mientras duermen plácidamente en Nochebuena.</p>
                     <div className="button">
-                        <a href="#"><i className="fa-solid fa-play"></i>Mirar</a>
+                        <a href="https://www.youtube.com/embed/mkK0iLvaRzQ?si=e73ut7GzZBEf72su" target="_blank"><i className="fa-solid fa-play"></i>Mirar Trailer</a>
                     </div>
                 </div>
                 <div className="content theSubstance">
@@ -93,7 +93,7 @@ const Banner = () => {
                     </h4>
                     <p>"Tú, pero mejor en todos los sentidos". Esa es la promesa de la sustancia, un producto revolucionario basado en la división celular, que crea un alter ego más joven, más bello, más perfecto.</p>
                     <div className="button">
-                        <a href="#"><i className="fa-solid fa-play"></i>Mirar</a>
+                        <a href="https://www.youtube.com/watch?v=LL7-o30o9ec&ab_channel=MUBILatinoamérica" target="_blank"><i className="fa-solid fa-play"></i>Mirar Trailer</a>
                     </div>
                 </div>
                 <div className="content venom3">
@@ -103,7 +103,7 @@ const Banner = () => {
                     </h4>
                     <p>Eddie y Venom están a la fuga. Perseguidos por sus sendos mundos y cada vez más cercados, el dúo se ve abocado a tomar una decisión devastadora que hará que caiga el telón sobre el último baile de Venom y Eddie.</p>
                     <div className="button">
-                        <a href="#"><i className="fa-solid fa-play"></i>Mirar</a>
+                        <a href="https://www.youtube.com/watch?v=9-WWYKdGl5E&ab_channel=ONEMediaEspañol" target="_blank"><i className="fa-solid fa-play"></i>Mirar Trailer</a>
                     </div>
                 </div>
 
@@ -127,9 +127,6 @@ const Banner = () => {
                         </div>
                     </div>
                 </div>
-
-                {/* Botón para el trailer */}
-                <a href="#" className="play"><i className="fa-solid fa-circle-play"></i>Mirar Trailer</a>
             </div>
         </>
     );
