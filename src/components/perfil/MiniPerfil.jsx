@@ -31,7 +31,6 @@ const MiniPerfil = ({ user, onLogout }) => {
                 </div>
                 <h2>Perfil del Usuario</h2>
             </div>
-            <p><strong>Nombre:</strong> {user.displayName || 'Sin nombre'}</p>
             <p><strong>Email:</strong> {user.email}</p>
             <button className="btn-logout" onClick={onLogout}>
                 Cerrar Sesión

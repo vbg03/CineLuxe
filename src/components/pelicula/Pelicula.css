@@ -187,3 +187,85 @@
   font-size: 1.2rem;
   margin-bottom: 30px;
 }
+
+/* Pantallas pequeñas (menos de 768px) */
+@media (max-width: 768px) {
+  .detalles {
+    grid-template-columns: 1fr; /* Cambiar a una sola columna */
+  }
+
+  .poster-pelicula {
+    max-width: 100%; /* Imagen ocupa todo el ancho disponible */
+  }
+
+  .info-detallada h1 {
+    font-size: 1.5rem; /* Reducir tamaño del título */
+  }
+
+  .info-detallada p {
+    font-size: 0.9rem; /* Reducir tamaño del texto */
+  }
+
+  .reseñas {
+    padding: 15px;
+  }
+
+  .reseñas h2 {
+    font-size: 1.2rem;
+  }
+
+  .reseña h3 {
+    font-size: 1rem;
+  }
+
+  .btn-reproducir,
+  .btn-trailer,
+  .btn-cerrar {
+    font-size: 1em; /* Botones más pequeños */
+    padding: 6px 10px; /* Reducir padding */
+  }
+
+  .trailer-modal {
+    width: 90%; /* Modal ocupa casi todo el ancho */
+    padding: 15px;
+  }
+}
+
+/* Pantallas medianas (entre 769px y 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .detalles {
+    grid-template-columns: 1fr 1fr; /* Mantener dos columnas, pero equilibradas */
+  }
+
+  .poster-pelicula {
+    max-width: 250px; /* Imagen más pequeña */
+  }
+
+  .info-detallada h1 {
+    font-size: 1.8rem; /* Ajustar título */
+  }
+
+  .reseñas {
+    padding: 18px;
+  }
+
+  .reseñas h2 {
+    font-size: 1.4rem;
+  }
+
+  .reseña h3 {
+    font-size: 1.1rem;
+  }
+
+  .btn-reproducir,
+  .btn-trailer,
+  .btn-cerrar {
+    font-size: 1.1em; /* Botones ligeramente más pequeños */
+    padding: 8px 12px;
+  }
+
+  .trailer-modal {
+    width: 70%; /* Modal ocupa un porcentaje menor */
+    padding: 20px;
+  }
+}

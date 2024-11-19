@@ -2,7 +2,7 @@
 .mini-perfil {
     position: fixed;
     top: 50%;
-    left: 50%;
+    right: 20px;
     transform: translate(-50%, -50%);
     width: 500px; /* Aumentar ancho */
     height: auto;
@@ -59,26 +59,27 @@
 /* Icono para Cerrar el Perfil */
 .mini-perfil .icon-close {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 60px; /* Más ancho */
-    height: 30px; /* Más alto y rectangular */
-    background: #162938;
-    font-size: 1.2em; /* Texto ligeramente más pequeño */
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: #162938; /* Color de fondo igual al de la página general */
+    font-size: 2em; /* Tamaño de fuente igual al de la página general */
     color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px; /* Rectangular con bordes suaves */
+    border-bottom-left-radius: 20px; /* Borde redondeado inferior izquierdo */
     cursor: pointer;
     z-index: 1;
     transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .mini-perfil .icon-close:hover {
-    background: #1e4a5f;
-    transform: scale(1.05);
+    background: #1e4a5f; /* Fondo más claro al pasar el mouse */
+    transform: scale(1.05); /* Agrandamiento al pasar el mouse */
 }
+
 
 /* Cabecera del Perfil (Foto e Información) */
 .mini-perfil .perfil-header {
@@ -112,4 +113,78 @@
 .mini-perfil .foto-perfil i {
     font-size: 3em;
     color: rgba(255, 255, 255, 0.5);
+}
+
+/* Pantallas pequeñas (menos de 768px) */
+@media (max-width: 768px) {
+    .mini-perfil {
+        width: 90%; /* Reducir el ancho al 90% de la pantalla */
+        padding: 15px; /* Reducir padding interno */
+    }
+
+    .mini-perfil h2 {
+        font-size: 1.8em; /* Reducir tamaño del título */
+    }
+
+    .mini-perfil p {
+        font-size: 1em; /* Reducir tamaño del texto */
+    }
+
+    .mini-perfil .btn-logout {
+        width: 100%; /* Botón ocupa todo el ancho disponible */
+        height: 45px; /* Reducir altura */
+        font-size: 1em; /* Texto más pequeño */
+    }
+
+    .mini-perfil .icon-close {
+        width: 40px; /* Más pequeño */
+        height: 20px; /* Más pequeño y rectangular */
+        font-size: 1em; /* Texto más pequeño */
+    }
+
+    .mini-perfil .foto-perfil {
+        width: 80px; /* Reducir tamaño de la foto */
+        height: 80px;
+    }
+
+    .mini-perfil .foto-perfil i {
+        font-size: 2.5em; /* Ícono más pequeño */
+    }
+}
+
+/* Pantallas medianas (entre 768px y 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .mini-perfil {
+        width: 70%; /* Ajustar ancho para tablets */
+        padding: 20px;
+    }
+
+    .mini-perfil h2 {
+        font-size: 2em; /* Ajustar tamaño del título */
+    }
+
+    .mini-perfil p {
+        font-size: 1.1em; /* Reducir ligeramente el tamaño del texto */
+    }
+
+    .mini-perfil .btn-logout {
+        width: 90%; /* Botón ligeramente más ancho */
+        height: 48px; /* Ajustar altura */
+        font-size: 1.1em; /* Texto ligeramente más pequeño */
+    }
+
+    .mini-perfil .icon-close {
+        width: 50px; /* Más pequeño */
+        height: 25px;
+        font-size: 1.1em; /* Texto más pequeño */
+    }
+
+    .mini-perfil .foto-perfil {
+        width: 90px; /* Reducir tamaño de la foto */
+        height: 90px;
+    }
+
+    .mini-perfil .foto-perfil i {
+        font-size: 2.8em; /* Ajustar tamaño del ícono */
+    }
 }
