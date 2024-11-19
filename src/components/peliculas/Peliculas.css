@@ -94,3 +94,78 @@
     color: #bbb;
     margin-bottom: 10px;
 }
+
+/* Pantallas pequeñas (menos de 768px) */
+@media (max-width: 768px) {
+    .peliculas-container {
+        flex-direction: column; /* Cambiar a diseño en columna */
+        padding-top: 60px; /* Ajustar padding superior */
+        width: 100%; /* Ajustar ancho */
+        margin: 0; /* Sin márgenes laterales */
+    }
+
+    .categorias {
+        width: 100%; /* Ocupa todo el ancho */
+        position: relative; /* No se queda fija al hacer scroll */
+        height: auto; /* Ajusta la altura automáticamente */
+        padding: 15px;
+        text-align: center; /* Centrar el contenido */
+    }
+
+    .peliculas {
+        padding: 10px; /* Reducir el padding general */
+        margin-top: 10px; /* Añadir un pequeño margen superior */
+    }
+
+    .peliculas-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Reducir tamaño mínimo de las tarjetas */
+        gap: 15px; /* Reducir el espacio entre tarjetas */
+    }
+
+    .pelicula img {
+        aspect-ratio: 3 / 4; /* Ajustar la proporción del póster */
+    }
+
+    .pelicula h3 {
+        font-size: 0.9rem; /* Reducir tamaño del título */
+    }
+
+    .pelicula p {
+        font-size: 0.8rem; /* Reducir tamaño del texto descriptivo */
+    }
+}
+
+/* Pantallas medianas (entre 768px y 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .peliculas-container {
+        padding-top: 70px;
+        width: 100%; /* Ajustar ancho */
+        margin: 0 20px; /* Añadir márgenes laterales */
+    }
+
+    .categorias {
+        width: 200px; /* Reducir ancho del panel de categorías */
+        padding: 15px;
+    }
+
+    .peliculas {
+        padding: 15px;
+    }
+
+    .peliculas-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* Ajustar tamaño de las tarjetas */
+        gap: 18px; /* Reducir espacio entre tarjetas */
+    }
+
+    .pelicula img {
+        aspect-ratio: 2 / 3; /* Mantener proporción estándar */
+    }
+
+    .pelicula h3 {
+        font-size: 1rem; /* Ajustar tamaño del título */
+    }
+
+    .pelicula p {
+        font-size: 0.85rem; /* Reducir ligeramente el tamaño del texto descriptivo */
+    }
+}

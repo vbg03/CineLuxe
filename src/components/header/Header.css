@@ -8,13 +8,13 @@
 
 /* Estilo para el botón de menú hamburguesa */
 .hamburger {
-    display: none; /* Oculto por defecto en pantallas grandes */
+    display: flex; /* Oculto por defecto en pantallas grandes */
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
     height: 20px;
     cursor: pointer;
-    z-index: 200; /* Asegura que esté por encima del menú desplegable */
+    z-index: 1200; /* Asegura que esté por encima del menú desplegable */
 }
 
 .hamburger span {
@@ -245,25 +245,7 @@
     color: #ff3700;
     background-color: rgba(255, 255, 255, 0.1);
   }
-  
-
-/* Mostrar menú hamburguesa solo en pantallas pequeñas */
-@media screen and (max-width: 768px) {
-    .hamburger {
-        display: flex;
-    }
-
-    .links li a,
-    .links li button {
-        text-align: center;
-        padding: 8px 10px;
-    }
-
-    .search {
-        display: none;
-    }
-}
-/* General del MiniPerfil */
+  /* General del MiniPerfil */
 .mini-perfil {
     position: fixed;
     top: 100px; /* Ajusta según la altura del header */
@@ -374,6 +356,24 @@
     transform: scale(1.05); /* Aumenta ligeramente el tamaño del botón */
 }
 
+
+
+/* Mostrar menú hamburguesa solo en pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .links li a,
+    .links li button {
+        text-align: center;
+        padding: 8px 10px;
+    }
+
+    .search {
+        display: none;
+    }
+}
 
 /* Pantallas grandes */
 @media screen and (min-width: 769px) {
