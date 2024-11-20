@@ -688,6 +688,187 @@ header {
 }
 /* General Responsive Design */
 
+/* Pantallas muy pequeñas (menos de 480px) */
+@media (max-width: 480px) {
+  /* General */
+  body {
+    font-size: 0.9rem; /* Texto ligeramente más pequeño */
+    line-height: 1.4; /* Espaciado mejorado entre líneas */
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden; /* Evita el scroll horizontal */
+  }
+
+  /* Header */
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .logo {
+    font-size: 1.2rem; /* Reduce el tamaño del logo */
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .hamburger {
+    display: flex; /* Botón de menú visible */
+  }
+
+  .links {
+    display: none;
+  }
+
+  .links.active {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 15px;
+    border-radius: 5px;
+    width: 90%; /* Menú ocupa casi todo el ancho */
+    margin: 0 auto;
+  }
+
+  .links li {
+    text-align: center;
+  }
+
+  .links li a {
+    font-size: 0.9rem; /* Texto más pequeño */
+  }
+
+  /* Banner */
+  .banner {
+    padding: 0 10px; /* Ajusta el espacio lateral */
+    text-align: center; /* Centra el contenido */
+    min-height: 100vh;
+  }
+
+  .banner .content {
+    max-width: 100%;
+    transform: none;
+  }
+
+  .banner .movie-title {
+    max-width: 100%;
+  }
+
+  .banner .carousel-box {
+    min-width: 300px; /* Reduce el tamaño del carrusel */
+    margin: 0 auto;
+  }
+
+  .banner .carousel .carousel-item img {
+    max-width: 100px; /* Reduce el tamaño de las imágenes */
+  }
+
+  /* Botones en el banner */
+  .banner .content .button a {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+
+  /* Contenido Principal */
+  .container {
+    padding: 10px;
+  }
+
+  .peliculas-grid {
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas para las tarjetas */
+    gap: 10px;
+  }
+
+  .pelicula {
+    font-size: 0.8rem;
+  }
+
+  .pelicula img {
+    width: 100%;
+    aspect-ratio: 3 / 4; /* Mantén proporción vertical */
+  }
+
+  .pelicula h3 {
+    font-size: 0.9rem;
+  }
+
+  .pelicula p {
+    font-size: 0.8rem;
+  }
+
+  /* Footer */
+  footer {
+    font-size: 0.8rem;
+    padding: 10px;
+    text-align: center;
+  }
+
+  footer a {
+    font-size: 0.9rem;
+  }
+
+  /* Mini Perfil */
+  .mini-perfil {
+    width: 90%; /* Más ancho para móviles */
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    padding: 10px;
+    text-align: center;
+  }
+
+  .mini-perfil h2 {
+    font-size: 1.2rem;
+  }
+
+  .mini-perfil p {
+    font-size: 0.9rem;
+  }
+
+  .mini-perfil .btn-logout {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+
+  /* Formulario de Login/Registro */
+  .wrapper {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .wrapper h2 {
+    font-size: 1.5rem;
+  }
+
+  .wrapper .btn {
+    font-size: 0.9rem;
+    height: 40px;
+  }
+
+  .input-box input {
+    font-size: 0.9rem;
+  }
+
+  .input-box label {
+    font-size: 0.8rem;
+  }
+
+  .wrapper .login-register p {
+    font-size: 0.8rem;
+  }
+
+  /* Modal de tráiler */
+  .trailer-modal {
+    width: 90%;
+    height: auto;
+  }
+
+  .trailer-modal iframe {
+    height: 200px; /* Ajusta la altura del tráiler */
+  }
+}
 /* Pantallas medianas (481px a 1024px) */
 @media (min-width: 481px) and (max-width: 1024px) {
   /* General */
