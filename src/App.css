@@ -688,229 +688,183 @@ header {
 }
 /* General Responsive Design */
 
-/* Estilo general para todos los tamaños */
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow-x: hidden; /* Evita el scroll horizontal */
-}
-
-/* Menú hamburguesa siempre visible */
-.hamburger {
-  display: flex; /* Siempre visible en todas las pantallas */
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 20px;
-  cursor: pointer;
-  z-index: 1200;
-}
-
-.hamburger span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background-color: #fff;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-.hamburger.active span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-/* Estilos del menú */
-.links {
-  display: none; /* Oculto por defecto */
-  flex-direction: column;
-  position: absolute;
-  top: 70px;
-  right: 20px;
-  background-color: rgba(0, 0, 0, 0.9);
-  border-radius: 8px;
-  padding: 15px;
-  width: 220px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  z-index: 100;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.links.active {
-  display: flex; /* Muestra el menú cuando está activo */
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.links li {
-  margin: 10px 0;
-  list-style: none;
-  text-align: center;
-}
-
-.links li a {
-  font-size: 1rem;
-  color: #fff;
-  text-decoration: none;
-  padding: 10px;
-  display: block;
-  border-radius: 4px;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-.links li a:hover {
-  color: #ff3700;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Adaptaciones para pantallas pequeñas (menos de 480px) */
-@media (max-width: 480px) {
+/* Pantallas medianas (481px a 1024px) */
+@media (min-width: 481px) and (max-width: 1024px) {
+  /* General */
   body {
-    font-size: 0.9rem;
-    line-height: 1.4;
+    font-size: 1rem; /* Tamaño de fuente ligeramente mayor que en móviles */
+    line-height: 1.5; /* Mejor legibilidad */
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden; /* Evita el scroll horizontal */
   }
 
+  /* Header */
   header {
-    flex-direction: column;
-    padding: 10px;
+    flex-direction: row;
+    height: auto;
+    padding: 15px 30px;
     background-color: rgba(0, 0, 0, 0.9);
   }
 
   .logo {
-    font-size: 1.2rem;
-    text-align: center;
-    margin-bottom: 10px;
+    font-size: 1.5rem; /* Aumenta ligeramente el tamaño del logo */
+  }
+
+  .hamburger {
+    display: flex; /* Botón de menú visible */
   }
 
   .links {
-    width: 90%; /* Menú ocupa casi todo el ancho */
-    margin: 0 auto;
+    display: none; /* Oculto por defecto */
   }
 
-  .banner {
-    padding: 0 10px;
-    text-align: center;
-    min-height: 100vh;
-  }
-
-  .peliculas-grid {
-    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
-    gap: 10px;
-  }
-
-  .pelicula img {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-  }
-
-  footer {
-    font-size: 0.8rem;
-    padding: 10px;
-    text-align: center;
-  }
-}
-
-/* Adaptaciones para pantallas medianas (481px a 1024px) */
-@media (min-width: 481px) and (max-width: 1024px) {
-  body {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-
-  header {
-    flex-direction: row;
-    padding: 15px 30px;
-  }
-
-  .logo {
-    font-size: 1.5rem;
-  }
-
-  .links {
+  .links.active {
+    display: flex;
+    flex-direction: column; /* Menú desplegable vertical */
+    gap: 15px;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 20px;
+    border-radius: 8px;
     width: 80%; /* Menú ocupa un 80% del ancho */
     margin: 0 auto;
   }
 
+  .links li {
+    text-align: center;
+  }
+
+  .links li a {
+    font-size: 1rem;
+  }
+
+  /* Banner */
   .banner {
-    padding: 0 20px;
+    padding: 0 20px; /* Ajusta el espacio lateral */
+    text-align: center;
     min-height: 90vh;
   }
 
+  .banner .content {
+    max-width: 80%;
+    transform: none;
+    margin: 0 auto;
+  }
+
+  .banner .movie-title {
+    max-width: 100%;
+  }
+
+  .banner .carousel-box {
+    min-width: 500px; /* Ajusta el tamaño del carrusel */
+    margin: 0 auto;
+  }
+
+  .banner .carousel .carousel-item img {
+    max-width: 150px; /* Ajusta el tamaño de las imágenes */
+  }
+
+  /* Botones en el banner */
+  .banner .content .button a {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  /* Contenido Principal */
+  .container {
+    padding: 20px;
+  }
+
   .peliculas-grid {
-    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas para aprovechar el espacio */
     gap: 15px;
+  }
+
+  .pelicula {
+    font-size: 1rem;
   }
 
   .pelicula img {
     width: 100%;
-    aspect-ratio: 2 / 3;
+    aspect-ratio: 2 / 3; /* Mantén proporción vertical estándar */
   }
 
+  .pelicula h3 {
+    font-size: 1rem;
+  }
+
+  .pelicula p {
+    font-size: 0.9rem;
+  }
+
+  /* Footer */
   footer {
     font-size: 1rem;
     padding: 20px;
     text-align: center;
   }
-}
 
-/* Para pantallas grandes (más de 1024px) */
-@media (min-width: 1025px) {
-  body {
-    font-size: 1.1rem;
-    line-height: 1.6;
+  footer a {
+    font-size: 1rem;
   }
 
-  header {
-    flex-direction: row;
-    padding: 20px 50px;
-  }
-
-  .logo {
-    font-size: 2rem;
-  }
-
-  .links {
-    flex-direction: row; /* Menú horizontal */
-    position: static;
-    display: flex;
-    gap: 20px;
-    background-color: transparent;
-    box-shadow: none;
-    padding: 0;
-    width: auto;
-  }
-
-  .links li {
-    margin: 0;
-  }
-
-  .links li a {
-    font-size: 1.1rem;
-    padding: 10px 20px;
-  }
-
-  .peliculas-grid {
-    grid-template-columns: repeat(4, 1fr); /* Cuatro columnas */
-    gap: 20px;
-  }
-
-  .pelicula img {
-    width: 100%;
-    aspect-ratio: 2 / 3;
-  }
-
-  footer {
-    font-size: 1.2rem;
-    padding: 30px;
+  /* Mini Perfil */
+  .mini-perfil {
+    width: 70%; /* Más ancho para tablets */
+    top: 50%;
+    right: 15%;
+    transform: translateY(-50%);
+    padding: 20px;
     text-align: center;
+  }
+
+  .mini-perfil h2 {
+    font-size: 1.5rem;
+  }
+
+  .mini-perfil p {
+    font-size: 1rem;
+  }
+
+  .mini-perfil .btn-logout {
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+
+  /* Formulario de Login/Registro */
+  .wrapper {
+    width: 80%;
+    padding: 25px;
+  }
+
+  .wrapper h2 {
+    font-size: 1.8rem;
+  }
+
+  .wrapper .btn {
+    font-size: 1rem;
+    height: 45px;
+  }
+
+  .input-box input {
+    font-size: 1rem;
+  }
+
+  .input-box label {
+    font-size: 0.9rem;
+  }
+
+  .wrapper .login-register p {
+    font-size: 0.9rem;
+  }
+
+  /* Modal de tráiler */
+  .trailer-modal {
+    width: 70%;
+    height: auto;
+  }
+
+  .trailer-modal iframe {
+    height: 300px; /* Ajusta la altura del tráiler */
   }
 }
