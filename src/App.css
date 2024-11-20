@@ -686,76 +686,186 @@ header {
   cursor: pointer;
   z-index: 1;
 }
-/* Pantallas pequeñas (menos de 768px) */
-@media (max-width: 768px) {
+/* General Responsive Design */
+
+/* Pantallas muy pequeñas (menos de 480px) */
+@media (max-width: 480px) {
+  /* General */
+  body {
+    font-size: 0.9rem; /* Texto ligeramente más pequeño */
+    line-height: 1.4; /* Espaciado mejorado entre líneas */
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden; /* Evita el scroll horizontal */
+  }
+
+  /* Header */
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .logo {
+    font-size: 1.2rem; /* Reduce el tamaño del logo */
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .hamburger {
+    display: flex; /* Botón de menú visible */
+  }
+
+  .links {
+    display: none;
+  }
+
+  .links.active {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 15px;
+    border-radius: 5px;
+    width: 90%; /* Menú ocupa casi todo el ancho */
+    margin: 0 auto;
+  }
+
+  .links li {
+    text-align: center;
+  }
+
+  .links li a {
+    font-size: 0.9rem; /* Texto más pequeño */
+  }
+
+  /* Banner */
+  .banner {
+    padding: 0 10px; /* Ajusta el espacio lateral */
+    text-align: center; /* Centra el contenido */
+    min-height: 100vh;
+  }
+
+  .banner .content {
+    max-width: 100%;
+    transform: none;
+  }
+
+  .banner .movie-title {
+    max-width: 100%;
+  }
+
+  .banner .carousel-box {
+    min-width: 300px; /* Reduce el tamaño del carrusel */
+    margin: 0 auto;
+  }
+
+  .banner .carousel .carousel-item img {
+    max-width: 100px; /* Reduce el tamaño de las imágenes */
+  }
+
+  /* Botones en el banner */
+  .banner .content .button a {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+
+  /* Contenido Principal */
+  .container {
+    padding: 10px;
+  }
+
+  .peliculas-grid {
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas para las tarjetas */
+    gap: 10px;
+  }
+
+  .pelicula {
+    font-size: 0.8rem;
+  }
+
+  .pelicula img {
+    width: 100%;
+    aspect-ratio: 3 / 4; /* Mantén proporción vertical */
+  }
+
+  .pelicula h3 {
+    font-size: 0.9rem;
+  }
+
+  .pelicula p {
+    font-size: 0.8rem;
+  }
+
+  /* Footer */
+  footer {
+    font-size: 0.8rem;
+    padding: 10px;
+    text-align: center;
+  }
+
+  footer a {
+    font-size: 0.9rem;
+  }
+
+  /* Mini Perfil */
+  .mini-perfil {
+    width: 90%; /* Más ancho para móviles */
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    padding: 10px;
+    text-align: center;
+  }
+
+  .mini-perfil h2 {
+    font-size: 1.2rem;
+  }
+
+  .mini-perfil p {
+    font-size: 0.9rem;
+  }
+
+  .mini-perfil .btn-logout {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+
+  /* Formulario de Login/Registro */
   .wrapper {
-      width: 80%; /* Reducir el ancho de los cuadros modales */
-      height: auto; /* Ajustar la altura automáticamente */
-      padding: 20px;
+    width: 90%;
+    padding: 15px;
   }
 
-  .wrapper .form-box {
-      padding: 25px; /* Reducir el padding dentro de los cuadros */
-  }
-
-  .wrapper .form-box h2 {
-      font-size: 1.5em; /* Reducir tamaño del título */
-  }
-
-  .wrapper .input-box input {
-      font-size: 0.9em; /* Reducir tamaño de los inputs */
+  .wrapper h2 {
+    font-size: 1.5rem;
   }
 
   .wrapper .btn {
-      height: 40px; /* Reducir altura de los botones */
-      font-size: 1em; /* Ajustar tamaño de texto */
+    font-size: 0.9rem;
+    height: 40px;
   }
 
-  .wrapper .icon-close {
-      width: 40px;
-      height: 40px; /* Reducir tamaño del icono de cerrar */
-      font-size: 1.2em; /* Ajustar tamaño del icono */
+  .input-box input {
+    font-size: 0.9rem;
   }
 
-  .wrapper.logout-message .btn {
-      width: 80%; /* Botón más pequeño */
-      height: 40px;
-  }
-}
-
-/* Pantallas medianas (entre 768px y 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .wrapper {
-      width: 70%; /* Ajustar ancho de los cuadros modales */
-      height: auto;
-      padding: 25px;
+  .input-box label {
+    font-size: 0.8rem;
   }
 
-  .wrapper .form-box {
-      padding: 30px;
+  .wrapper .login-register p {
+    font-size: 0.8rem;
   }
 
-  .wrapper .form-box h2 {
-      font-size: 1.8em; /* Ajustar tamaño del título */
+  /* Modal de tráiler */
+  .trailer-modal {
+    width: 90%;
+    height: auto;
   }
 
-  .wrapper .input-box input {
-      font-size: 1em; /* Ajustar tamaño de los inputs */
-  }
-
-  .wrapper .btn {
-      height: 45px;
-      font-size: 1.1em; /* Ajustar tamaño de texto de los botones */
-  }
-
-  .wrapper .icon-close {
-      width: 45px;
-      height: 45px; /* Ajustar tamaño del icono de cerrar */
-      font-size: 1.4em; /* Ajustar tamaño del icono */
-  }
-
-  .wrapper.logout-message .btn {
-      width: 70%; /* Ajustar ancho del botón */
-      height: 45px;
+  .trailer-modal iframe {
+    height: 200px; /* Ajusta la altura del tráiler */
   }
 }
